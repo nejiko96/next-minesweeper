@@ -118,10 +118,10 @@ Creating a new Next.js app in /Users/haruko/workspace/next-minesweeper.
    // 保存時にPrettierによる整形を行う
    "editor.formatOnSave": true,
    "[javascript][javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+     "editor.defaultFormatter": "esbenp.prettier-vscode"
    },
    "[typescript][typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+     "editor.defaultFormatter": "esbenp.prettier-vscode"
    },
    ```
 
@@ -132,9 +132,20 @@ Creating a new Next.js app in /Users/haruko/workspace/next-minesweeper.
 
 1. VSCode の拡張機能「Tailwind CSS IntelliSense」を入れておくと便利
 
-1. prettier-plugin-tailwindcss の導入
-   - class の並び順をソートしてくれる  
+<!-- 1. prettier-plugin-tailwindcss の導入
+
+   - class の並び順をソートしてくれる
      ずらずら並ぶのはそのまま
-   ```
-   npm install --save-dev prettier-plugin-tailwindcss
-   ```
+
+   - パッケージ追加
+
+     ```
+     npm install --save-dev prettier-plugin-tailwindcss
+     ```
+
+   - prettier.config.js の追加
+     ```
+     module.exports = {
+       plugins: [require('prettier-plugin-tailwindcss')]
+     }
+     ``` -->
