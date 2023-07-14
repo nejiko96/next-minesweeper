@@ -28,6 +28,20 @@ Ok to proceed? (y) y
 Creating a new Next.js app in /Users/haruko/workspace/next-minesweeper.
 ```
 
+## 既存プロジェクトの開発環境初期化
+
+1. リポジトリをクローン
+
+   ```
+   git clone https://github.com/nejiko96/next-minesweeper.git
+   ```
+
+1. 依存パッケージの初期化
+   ```
+   cd next-minesweeper
+   npm install
+   ```
+
 ## 開発の流れ
 
 1. アプリ起動
