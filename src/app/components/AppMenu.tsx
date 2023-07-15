@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Menu, Transition } from '@headlessui/react'
 import classNames from 'classnames'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { Fragment, HTMLAttributes } from 'react'
 
 const menuItems = [
@@ -42,8 +42,8 @@ const menuItems = [
 type Props = HTMLAttributes<HTMLDivElement>
 
 const AppMenu: React.FC<Props> = ({ className }) => {
-  // next.js app router
-  const router = useRouter()
+  // app router pathname
+  const pathname = usePathname()
 
   return (
     <Menu as="div" className={classNames('relative', className)}>
@@ -63,15 +63,15 @@ const AppMenu: React.FC<Props> = ({ className }) => {
         <Menu.Items className="absolute right-0 z-10 origin-top-right mt-2 w-44 divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           {menuItems.map((item) => (
             <div key={item.path} className="p-1">
-              <Menu.Item disabled={item.path === router.pathname}>
+              <Menu.Item disabled={item.path === pathname}>
                 {({ active }) => (
                   <Link
                     className={classNames(
                       'group flex w-full items-center rounded-md px-2 py-2 text-sm',
                       {
-                        'text-gray-400': item.path === router.pathname,
-                        'bg-sky-500 text-white': item.path !== router.pathname && active,
-                        'text-gray-900': item.path !== router.pathname && !active,
+                        'text-gray-400': item.path === pathname,
+                        'bg-sky-500 text-white': item.path !== pathname && active,
+                        'text-gray-900': item.path !== pathname && !active,
                       },
                     )}
                     href={item.path}
