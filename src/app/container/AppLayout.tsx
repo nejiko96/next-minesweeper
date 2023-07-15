@@ -2,7 +2,9 @@ import AppMenu from '@/app/components/AppMenu'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+type Props = { children: React.ReactNode }
+
+const AppLayout: React.FC<Props> = ({ children }) => {
   return (
     <>
       <header>
@@ -11,7 +13,7 @@ const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             <h1>
               <span className="mr-2 text-xl font-semibold">Next.js demo page</span>
               <a
-                href="https://github.com/nejiko96/vue3-ts-minesweeper"
+                href="https://github.com/nejiko96/next-minesweeper"
                 target="_blank"
                 title="View source on GitHub"
                 aria-label="View source on GitHub"
