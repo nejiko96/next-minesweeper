@@ -22,7 +22,7 @@ const MsHome: React.FC = () => {
         </div>
         <MsGame settings={settings} />
         <button
-          className="absolute top-2.5 right-2.5 mr-2 mb-2 rounded-lg bg-teal-500 px-5 py-2.5 text-sm font-medium text-white hover:bg-teal-400 focus:outline-none focus:ring-4 focus:ring-teal-300 dark:focus:ring-teal-800"
+          className="absolute top-2.5 right-2.5 mr-2 mb-2 rounded-lg bg-gray-500 px-5 py-2.5 text-sm font-medium text-white hover:bg-gray-400 focus:outline-none focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-800"
           type="button"
           aria-controls="drawer-right"
           onClick={() => setSettingsOpen(true)}
@@ -42,7 +42,7 @@ const MsHome: React.FC = () => {
           leaveFrom="translate-x-0"
           leaveTo="translate-x-full"
         >
-          {settingsOpen && <MsSettings onClose={() => setSettingsOpen(false)} />}
+          <MsSettings onClose={() => setSettingsOpen(false)} />
         </Transition>
       </div>
     </>
