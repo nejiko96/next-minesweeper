@@ -6,44 +6,47 @@ import { Menu, Transition } from '@headlessui/react'
 import classNames from 'classnames'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import React from 'react'
+import { HTMLAttributes } from 'react'
 
-const AppMenu: React.FC<{ className: string }> = ({ className }) => {
-  const menuItems = [
-    {
-      title: 'Minesweeper',
-      path: '/ms',
-    },
-    {
-      title: 'Cat API',
-      path: '/cat',
-    },
-    {
-      title: 'Wordle Helper',
-      path: '/wordle',
-    },
-    {
-      title: 'Nerdle Helper',
-      path: '/nerdle',
-    },
-    {
-      title: 'Slide Puzzle',
-      path: '/slide',
-    },
-    {
-      title: 'Flag Training',
-      path: '/flag_training',
-    },
-    {
-      title: 'Flag Quiz',
-      path: '/flag_quiz',
-    },
-  ]
+const menuItems = [
+  {
+    title: 'Minesweeper',
+    path: '/ms',
+  },
+  {
+    title: 'Cat API',
+    path: '/cat',
+  },
+  {
+    title: 'Wordle Helper',
+    path: '/wordle',
+  },
+  {
+    title: 'Nerdle Helper',
+    path: '/nerdle',
+  },
+  {
+    title: 'Slide Puzzle',
+    path: '/slide',
+  },
+  {
+    title: 'Flag Training',
+    path: '/flag_training',
+  },
+  {
+    title: 'Flag Quiz',
+    path: '/flag_quiz',
+  },
+]
 
+type Props = HTMLAttributes<HTMLDivElement>
+
+const AppMenu: React.FC<Props> = ({ className }) => {
+  // next.js app router
   const router = useRouter()
 
   return (
-    <Menu as="div" className="relative">
+    <Menu as="div" className={classNames('relative', className)}>
       <Menu.Button className="rounded-md bg-black bg-opacity-0 px-4 py-2 hover:bg-opacity-30">
         Menu
         <FontAwesomeIcon icon={faAngleDown} className="ml-2" />
@@ -63,11 +66,14 @@ const AppMenu: React.FC<{ className: string }> = ({ className }) => {
                 <Menu.Item disabled={item.path === router.pathname}>
                   {({ active }) => (
                     <Link
-                      className={classNames('group flex w-full items-center rounded-md px-2 py-2 text-sm', {
-                        'text-gray-400': item.path === router.pathname,
-                        'bg-teal-500 text-white': item.path !== router.pathname && active,
-                        'text-gray-900': item.path !== router.pathname && !active,
-                      })}
+                      className={classNames(
+                        'group flex w-full items-center rounded-md px-2 py-2 text-sm',
+                        {
+                          'text-gray-400': item.path === router.pathname,
+                          'bg-teal-500 text-white': item.path !== router.pathname && active,
+                          'text-gray-900': item.path !== router.pathname && !active,
+                        },
+                      )}
                       href={item.path}
                     >
                       {item.title}
