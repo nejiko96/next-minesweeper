@@ -47,7 +47,7 @@ const AppMenu: React.FC<Props> = ({ className }) => {
 
   return (
     <Menu as="div" className={classNames('relative', className)}>
-      <Menu.Button className="rounded-md bg-black bg-opacity-0 px-4 py-2 hover:bg-opacity-30">
+      <Menu.Button className="rounded-md bg-black/0 px-4 py-2 hover:bg-black/30">
         Menu <FontAwesomeIcon icon={faAngleDown} />
       </Menu.Button>
       <Transition
@@ -59,7 +59,7 @@ const AppMenu: React.FC<Props> = ({ className }) => {
         leaveFrom="transform scale-100 opacity-100"
         leaveTo="transform scale-95 opacity-0"
       >
-        <Menu.Items className="absolute right-0 z-10 origin-top-right mt-2 w-44 divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute right-0 z-10 mt-2 w-44 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
           {menuItems.map((item) => (
             <div key={item.path} className="p-1">
               <Menu.Item disabled={item.path === pathname}>

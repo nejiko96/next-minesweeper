@@ -20,7 +20,7 @@ const AppLayout: React.FC<Props> = ({ children }) => {
                 target="_blank"
                 title="View source on GitHub"
                 aria-label="View source on GitHub"
-                className="rounded-md bg-black bg-opacity-0 px-2 py-4 hover:bg-opacity-30"
+                className="rounded-md bg-black/0 px-2 py-4 hover:bg-black/30"
               >
                 <FontAwesomeIcon icon={faGithub} size="2xl" />
               </a>

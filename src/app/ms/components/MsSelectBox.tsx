@@ -20,7 +20,7 @@ const MsSelectBox: React.FC<Props> = ({ id, label, options, ...props }) => {
       </label>
       <div className="relative">
         <select
-          className="block w-full appearance-none rounded border border-gray-200 bg-gray-200 py-1 px-4 pr-8 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
+          className="block w-full appearance-none rounded border border-gray-200 bg-gray-200 px-4 py-1 pr-8 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
           {...props}
         >
           {options.map((option, index) => (
@@ -30,7 +30,7 @@ const MsSelectBox: React.FC<Props> = ({ id, label, options, ...props }) => {
           ))}
         </select>
         <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-          <FontAwesomeIcon icon={faAngleDown} className="xs" />
+          <FontAwesomeIcon icon={faAngleDown} size="xs" />
         </div>
       </div>
     </div>

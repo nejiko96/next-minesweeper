@@ -97,7 +97,7 @@ const MsSettings: React.FC<Props> = ({ onClose }) => {
         <button
           type="button"
           aria-controls="drawer-right"
-          className="absolute top-2.5 right-2.5 inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
+          className="absolute right-2.5 top-2.5 inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white"
           onClick={handleClose}
         >
           <FontAwesomeIcon icon={faXmark} size="lg" />
