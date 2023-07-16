@@ -8,7 +8,7 @@ const AppLayout: React.FC<Props> = ({ children }) => {
   return (
     <>
       <header>
-        <nav className="bg-teal-500 text-white">
+        <nav className="bg-sky-500 text-white">
           <div className="container mx-auto flex h-16 items-center justify-between px-2 py-4">
             <h1>
               <span className="mr-2 text-xl font-semibold">Next.js demo page</span>

@@ -86,19 +86,17 @@ const MsGame: React.FC<Props> = ({ settings: { lang, theme, board } }) => {
   return (
     <PreventContextMenu>
       <div className={classes.container}>
-        {locale.remain1}
-        <span className={classes['text-box']}>{remain}</span>
-        {locale.remain2}
-        <span className={classes.space}></span>
-        {locale.timer1}
+        {locale.remain1} <span className={classes['text-box']}>{remain}</span> {locale.remain2}
+        <span className="w-5"></span>
+        {locale.timer1}{' '}
         <MsTimer
           className={classes['text-box']}
           interval="1s"
           limit={999}
           mode={timerModeTbl[game.status]}
-        />
+        />{' '}
         {locale.timer2}
-        <span className={classes.space}></span>
+        <span className="w-5"></span>
         <Transition
           as="span"
           show={game.status === GameStatusEnum.CLEARED}
@@ -106,7 +104,6 @@ const MsGame: React.FC<Props> = ({ settings: { lang, theme, board } }) => {
         >
           {locale.cleared}
         </Transition>
-        {/* {game.status === GameStatusEnum.CLEARED && locale.cleared} */}
         <br />
         <MsBoard grid={game.grid} overlay={overlay}>
           <MsCell
