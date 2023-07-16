@@ -12,6 +12,8 @@ import { selectSettings } from './store/settingsSlice'
 const MsHome: React.FC = () => {
   // connect to store
   const settings = useSelector(selectSettings)
+
+  // data
   const [settingsOpen, setSettingsOpen] = useState(false)
 
   return (

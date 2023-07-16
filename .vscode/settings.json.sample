@@ -1,0 +1,26 @@
+{
+  "editor.codeActionsOnSave": {
+    // ESLintに対応しているファイルは保存時に修正
+    "source.fixAll.eslint": true,
+    // インポートの再編成
+    "source.organizeImports": true
+  },
+
+  // ESLintのフォーマット機能を無効化
+  "eslint.format.enable": false,
+
+  // 保存時にPrettierによる整形を行う
+  "editor.formatOnSave": true,
+  "[javascript][javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript][typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json][jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
