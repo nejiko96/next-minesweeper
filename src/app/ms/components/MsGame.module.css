@@ -19,10 +19,6 @@
   width: 40px;
 }
 
-.space {
-  width: 20px;
-}
-
 .pyonpyon-enter-active {
   animation: pyonpyon 1s ease-in-out;
 }

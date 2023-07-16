@@ -48,8 +48,7 @@ const AppMenu: React.FC<Props> = ({ className }) => {
   return (
     <Menu as="div" className={classNames('relative', className)}>
       <Menu.Button className="rounded-md bg-black bg-opacity-0 px-4 py-2 hover:bg-opacity-30">
-        Menu
-        <FontAwesomeIcon icon={faAngleDown} className="ml-2" />
+        Menu <FontAwesomeIcon icon={faAngleDown} />
       </Menu.Button>
       <Transition
         as={Fragment}

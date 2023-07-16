@@ -27,8 +27,7 @@ const MsHome: React.FC = () => {
           aria-controls="drawer-right"
           onClick={() => setSettingsOpen(true)}
         >
-          <FontAwesomeIcon icon={faGear} />
-          Settings
+          <FontAwesomeIcon icon={faGear} /> Settings
         </button>
 
         <Transition
