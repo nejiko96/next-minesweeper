@@ -1,6 +1,7 @@
 import AppMenu from '@/app/components/AppMenu'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Link from 'next/link'
 
 type Props = { children: React.ReactNode }
 
@@ -11,7 +12,9 @@ const AppLayout: React.FC<Props> = ({ children }) => {
         <nav className="bg-sky-500 text-white">
           <div className="container mx-auto flex h-16 items-center justify-between px-2 py-4">
             <h1>
-              <span className="mr-2 text-xl font-semibold">Next.js demo page</span>
+              <Link href="/" className="mr-2 text-xl font-semibold">
+                Next.js demo page
+              </Link>
               <a
                 href="https://github.com/nejiko96/next-minesweeper"
                 target="_blank"
