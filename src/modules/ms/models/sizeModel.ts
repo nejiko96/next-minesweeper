@@ -1,4 +1,4 @@
-import { StdLevelType, SizeSettingType, SizeStateType } from '../types'
+import { SizeSettingType, SizeStateType, StdLevelType } from '../types'
 
 type SizeRangeType = {
   min: number

@@ -1,4 +1,4 @@
-import { fillArray, fillArray2D, noop } from '@/app/utils'
+import { fillArray, fillArray2D, noop } from '@/core/utils'
 import {
   BoardStateType,
   GameModelStateType,

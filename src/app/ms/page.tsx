@@ -5,9 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Transition } from '@headlessui/react'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import MsGame from './components/MsGame'
-import MsSettings from './components/MsSettings'
-import { selectSettings } from './store/settingsSlice'
+import MsGame from '../../modules/ms/components/MsGame'
+import MsSettings from '../../modules/ms/components/MsSettings'
+import { selectSettings } from '../../modules/ms/store/settingsSlice'
 
 const MsHome: React.FC = () => {
   // connect to store

@@ -1,4 +1,4 @@
-import AppMenu from '@/app/components/AppMenu'
+import AppMenu from '@/core/components/AppMenu'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'

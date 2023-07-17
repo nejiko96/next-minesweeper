@@ -1,4 +1,4 @@
-import AppLayout from '@/app/container/AppLayout'
+import AppLayout from '@/core/container/AppLayout'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
