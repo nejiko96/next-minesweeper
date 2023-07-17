@@ -155,7 +155,6 @@ Creating a new Next.js app in /Users/haruko/workspace/next-minesweeper.
 
    - class の並び順をソートしてくれる
      ずらずら並ぶのはそのまま
-
    - パッケージ追加
 
      ```
@@ -169,5 +168,4 @@ Creating a new Next.js app in /Users/haruko/workspace/next-minesweeper.
        "prettier",
        "plugin:tailwindcss/recommended"
      ],
-     "plugins": ["tailwindcss"]
      ```
