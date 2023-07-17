@@ -1,4 +1,4 @@
-import { noop } from '@/app/utils'
+import { noop } from '@/core/utils'
 import { MouseStateType } from '../types'
 
 type TgtHandlerType<S, P extends unknown[]> = (state: S, ...args: P) => void
@@ -44,9 +44,9 @@ const pressedTbl: Readonly<Record<number, number>> = {
   [EvBtnEnum.RIGHT]: PressedEnum.RIGHT,
 }
 
-const makeDispatch = <S, P extends unknown[]>(
+const makeDispatch: <S, P extends unknown[]>(
   model: TgtModelType<S, P>
-): TgtHandlerType<S, P>[][] => [
+) => TgtHandlerType<S, P>[][] = (model) => [
   [
     noop,
     model.handleLeftMouseDown,
@@ -88,11 +88,11 @@ const makeWrapper = <S, P extends unknown[]>(model: TgtModelType<S, P>) => ({
     state.pressed = 0
     this.dispatch[EventEnum.MOUSE_UP][pressedOld](state, ...args)
   },
-  handleMouseOver(state: MouseStateType & S, ...args: P): void {
+  handleMouseOver(state: Readonly<MouseStateType> & S, ...args: P): void {
     if (state.pressed === 0) return
     this.dispatch[EventEnum.MOUSE_OVER][state.pressed](state, ...args)
   },
-  handleMouseOut(state: MouseStateType & S, ...args: P): void {
+  handleMouseOut(state: Readonly<MouseStateType> & S, ...args: P): void {
     if (state.pressed === 0) return
     this.dispatch[EventEnum.MOUSE_OUT][state.pressed](state, ...args)
   },

@@ -1,7 +1,7 @@
 'use client'
 
+import store from '@/modules/minesweeper/store'
 import { Provider } from 'react-redux'
-import store from './store'
 
 type Props = { children: React.ReactNode }
 

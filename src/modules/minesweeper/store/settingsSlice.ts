@@ -36,9 +36,16 @@ export const settingsSlice = createSlice({
   },
 })
 
-export const { changeLang, changeTheme, changeLevel, changeWidth, changeHeight, changeMines } =
-  settingsSlice.actions
+export const {
+  changeLang,
+  changeTheme,
+  changeLevel,
+  changeWidth,
+  changeHeight,
+  changeMines,
+} = settingsSlice.actions
 
-export const selectSettings = (state: { settings: SettingsType }) => state.settings
+export const selectSettings = (state: { settings: SettingsType }) =>
+  state.settings
 
 export default settingsSlice.reducer

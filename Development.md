@@ -67,6 +67,11 @@ Creating a new Next.js app in /Users/haruko/workspace/next-minesweeper.
 
    `.next` フォルダにビルド結果が生成される
 
+1. デプロイ
+   1. VercelがGitHubのソース更新を検知して勝手にデプロイする
+   1. Vercelにサインアップしたらいきなりリポジトリを選択させられて自動連携しはじめた
+   1. チームで使うとお金を取られるので、その時には自分でGitHub Actionsの設定をしたほうがよい
+
 ## VSCode の設定
 
 ### eslint (JavaScript コードチェッカー)
@@ -146,20 +151,21 @@ Creating a new Next.js app in /Users/haruko/workspace/next-minesweeper.
 
 1. VSCode の拡張機能「Tailwind CSS IntelliSense」を入れておくと便利
 
-<!-- 1. prettier-plugin-tailwindcss の導入
+1. eslint-plugin-tailwindcss の導入
 
    - class の並び順をソートしてくれる
      ずらずら並ぶのはそのまま
-
    - パッケージ追加
 
      ```
-     npm install --save-dev prettier-plugin-tailwindcss
+     npm install --save-dev eslint-plugin-tailwindcss
      ```
 
-   - prettier.config.js の追加
+   - eslintrc.json に設定追加
      ```
-     module.exports = {
-       plugins: [require('prettier-plugin-tailwindcss')]
-     }
-     ``` -->
+     "extends": [
+       "next/core-web-vitals",
+       "prettier",
+       "plugin:tailwindcss/recommended"
+     ],
+     ```

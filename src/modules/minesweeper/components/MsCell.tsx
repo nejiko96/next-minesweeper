@@ -53,13 +53,13 @@ const MsCell: React.FC<Props> = ({
   // mouse events
   const handleMouseDown: React.MouseEventHandler<HTMLSpanElement> = (ev) =>
     onMouseDown({ button: ev.button, row, col })
-  const handleMouseUp = () => onMouseUp({ row, col })
-  const handleMouseEnter = () => onMouseOver({ row, col })
-  const handleMouseLeave = () => onMouseOut({ row, col })
+  const handleMouseUp: () => void = () => onMouseUp({ row, col })
+  const handleMouseEnter: () => void = () => onMouseOver({ row, col })
+  const handleMouseLeave: () => void = () => onMouseOut({ row, col })
 
   // touch events
   const [touched, setTouched] = useState(false)
-  const handleTouchStart = () => {
+  const handleTouchStart: () => void = () => {
     // console.log('handleTouchStart');
     onTouchStart({ row, col })
     setTouched(true)
