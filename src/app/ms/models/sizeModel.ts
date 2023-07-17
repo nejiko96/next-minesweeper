@@ -36,7 +36,7 @@ const heightDef: Readonly<SizeRangeType> = {
   default: 9,
 }
 
-const minesDef = (n: number): SizeRangeType => {
+const minesDef: (n: number) => SizeRangeType = (n) => {
   const pct = 10 + ((n / 45) | 0)
   return {
     min: 10,
@@ -45,22 +45,24 @@ const minesDef = (n: number): SizeRangeType => {
   }
 }
 
-const adjustParam = (
+const adjustParam: (
   value: number | undefined,
   rng: Readonly<SizeRangeType>,
-): number =>
+) => number = (value, rng) =>
   value === undefined
     ? rng.default
     : Math.min(Math.max(value | 0, rng.min), rng.max)
 
-const calcCustomSize = (param: Readonly<SizeSettingType>): SizeStateType => {
+const calcCustomSize: (param: Readonly<SizeSettingType>) => SizeStateType = (
+  param,
+) => {
   const width = adjustParam(param.width, widthDef)
   const height = adjustParam(param.height, heightDef)
   const mines = adjustParam(param.mines, minesDef(width * height))
   return { width, height, mines }
 }
 
-const calcSize = (param: SizeSettingType): SizeStateType =>
+const calcSize: (param: SizeSettingType) => SizeStateType = (param) =>
   param.level === 'custom' ? calcCustomSize(param) : stdSizeDef[param.level]
 
 export { calcSize }

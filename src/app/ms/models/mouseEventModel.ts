@@ -44,9 +44,9 @@ const pressedTbl: Readonly<Record<number, number>> = {
   [EvBtnEnum.RIGHT]: PressedEnum.RIGHT,
 }
 
-const makeDispatch = <S, P extends unknown[]>(
+const makeDispatch: <S, P extends unknown[]>(
   model: TgtModelType<S, P>,
-): TgtHandlerType<S, P>[][] => [
+) => TgtHandlerType<S, P>[][] = (model) => [
   [
     noop,
     model.handleLeftMouseDown,

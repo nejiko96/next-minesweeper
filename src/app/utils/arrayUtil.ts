@@ -15,7 +15,7 @@ const sample: Sample = <T>(arr: T[], n?: number): any => {
   return ret.slice(ret.length - m)
 }
 
-const shuffle = <T>(arr: T[]): T[] => {
+const shuffle: <T>(arr: T[]) => T[] = (arr) => {
   const ret = [...arr]
   for (let i = ret.length - 1; i >= 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
@@ -74,14 +74,14 @@ const repeatedPermutation: RepeatedPermutation = <T>(
   )
 }
 
-const fillArray = <T>(n: number, fn: (i: number) => T): T[] =>
+const fillArray: <T>(n: number, fn: (i: number) => T) => T[] = (n, fn) =>
   Array.from({ length: n }, (_, i) => fn(i))
 
-const fillArray2D = <T>(
+const fillArray2D: <T>(
   w: number,
   h: number,
   fn: (i: number, j: number) => T,
-): T[][] =>
+) => T[][] = (w, h, fn) =>
   Array.from({ length: h }, (_, i) =>
     Array.from({ length: w }, (__, j) => fn(i, j)),
   )

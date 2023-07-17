@@ -32,15 +32,15 @@ const resultEnum = {
   UNMARKED: 8,
 } as const
 
-const initialValue = (): number => valueFlags.HIDDEN
+const initialValue: () => number = () => valueFlags.HIDDEN
 
-const putMine = (f: number): number => f | valueFlags.MINE
+const putMine: (f: number) => number = (f) => f | valueFlags.MINE
 
-const press = (f: number): number => f | valueFlags.HID_PRESSED
+const press: (f: number) => number = (f) => f | valueFlags.HID_PRESSED
 
-const release = (f: number): number => f & ~valueFlags.HID_PRESSED
+const release: (f: number) => number = (f) => f & ~valueFlags.HID_PRESSED
 
-const toggleMark = (f: number): [number, number] => {
+const toggleMark: (f: number) => [number, number] = (f) => {
   // already opened
   if (!(f & valueFlags.HIDDEN)) {
     return [f, resultEnum.NONE]
@@ -60,10 +60,13 @@ const toggleMark = (f: number): [number, number] => {
   return [f | valueFlags.MARKED, resultEnum.MARKED]
 }
 
-const forceMark = (f: number): number =>
+const forceMark: (f: number) => number = (f) =>
   (f & ~valueFlags.HID_PENDING) | valueFlags.MARKED
 
-const open = (f: number, byClick = true): [number, number] => {
+const open: (f: number, byClick: boolean) => [number, number] = (
+  f,
+  byClick = true,
+) => {
   // already opened
   if (!(f & valueFlags.HIDDEN)) {
     return [f, resultEnum.NONE]
@@ -76,7 +79,7 @@ const open = (f: number, byClick = true): [number, number] => {
   let f2 = f & ~valueFlags.HIDDEN
   // if opend a mine
   if (f2 & valueFlags.MINE) {
-    // esplode when clicked
+    // explode when clicked
     if (byClick) {
       f2 |= valueFlags.OPEN_EXPLODED
     }
@@ -85,16 +88,16 @@ const open = (f: number, byClick = true): [number, number] => {
   return [f2, resultEnum.OPENED]
 }
 
-const setHint = (f: number, hint: number): number =>
+const setHint: (f: number, hint: number) => number = (f, hint) =>
   (f & ~valueFlags.OPEN_HINT) | (hint << 4)
 
-const getHint = (f: number): number =>
+const getHint: (f: number) => number = (f) =>
   // return -1 if not empty
   f & valueFlags.MAIN ? -1 : (f & valueFlags.OPEN_HINT) >> 4
 
-const isHidden = (f: number): boolean => (f & valueFlags.HIDDEN) > 0
+const isHidden: (f: number) => boolean = (f) => (f & valueFlags.HIDDEN) > 0
 
-const styleIdx = (f: number): number => {
+const styleIdx: (f: number) => number = (f) => {
   if (f & valueFlags.MARKED) {
     if ((f & valueFlags.MAIN) === valueFlags.MARKED) return styleEnum.MISTAKE
     return styleEnum.MARKED
