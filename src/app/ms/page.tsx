@@ -1,13 +1,13 @@
 'use client'
 
+import MsGame from '@/modules/minesweeper/components/MsGame'
+import MsSettings from '@/modules/minesweeper/components/MsSettings'
+import { selectSettings } from '@/modules/minesweeper/store/settingsSlice'
 import { faGear } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Transition } from '@headlessui/react'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import MsGame from '../../modules/ms/components/MsGame'
-import MsSettings from '../../modules/ms/components/MsSettings'
-import { selectSettings } from '../../modules/ms/store/settingsSlice'
 
 const MsHome: React.FC = () => {
   // connect to store

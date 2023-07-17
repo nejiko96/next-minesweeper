@@ -1,12 +1,12 @@
-import { SizeSettingType, SizeStateType, StdLevelType } from '../types'
+import { SizeSettingType, SizeStateType } from '../types'
 
-type SizeRangeType = {
+type SizeRangeType = Readonly<{
   min: number
   max: number
   default: number
-}
+}>
 
-const stdSizeDef: Readonly<Record<StdLevelType, SizeStateType>> = {
+const stdSizeDef = {
   easy: {
     width: 9,
     height: 9,
@@ -22,19 +22,19 @@ const stdSizeDef: Readonly<Record<StdLevelType, SizeStateType>> = {
     height: 16,
     mines: 99,
   },
-}
+} as const
 
-const widthDef: Readonly<SizeRangeType> = {
+const widthDef = {
   min: 9,
   max: 30,
   default: 9,
-}
+} as const
 
-const heightDef: Readonly<SizeRangeType> = {
+const heightDef = {
   min: 9,
   max: 24,
   default: 9,
-}
+} as const
 
 const minesDef: (n: number) => SizeRangeType = (n) => {
   const pct = 10 + ((n / 45) | 0)
@@ -45,16 +45,16 @@ const minesDef: (n: number) => SizeRangeType = (n) => {
   }
 }
 
-const adjustParam: (
-  value: number | undefined,
-  rng: Readonly<SizeRangeType>,
-) => number = (value, rng) =>
+const adjustParam: (value: number | undefined, rng: SizeRangeType) => number = (
+  value,
+  rng
+) =>
   value === undefined
     ? rng.default
     : Math.min(Math.max(value | 0, rng.min), rng.max)
 
 const calcCustomSize: (param: Readonly<SizeSettingType>) => SizeStateType = (
-  param,
+  param
 ) => {
   const width = adjustParam(param.width, widthDef)
   const height = adjustParam(param.height, heightDef)
@@ -62,7 +62,7 @@ const calcCustomSize: (param: Readonly<SizeSettingType>) => SizeStateType = (
   return { width, height, mines }
 }
 
-const calcSize: (param: SizeSettingType) => SizeStateType = (param) =>
+const calcSize: (param: Readonly<SizeSettingType>) => SizeStateType = (param) =>
   param.level === 'custom' ? calcCustomSize(param) : stdSizeDef[param.level]
 
 export { calcSize }

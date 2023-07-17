@@ -45,7 +45,7 @@ const pressedTbl: Readonly<Record<number, number>> = {
 }
 
 const makeDispatch: <S, P extends unknown[]>(
-  model: TgtModelType<S, P>,
+  model: TgtModelType<S, P>
 ) => TgtHandlerType<S, P>[][] = (model) => [
   [
     noop,
@@ -88,11 +88,11 @@ const makeWrapper = <S, P extends unknown[]>(model: TgtModelType<S, P>) => ({
     state.pressed = 0
     this.dispatch[EventEnum.MOUSE_UP][pressedOld](state, ...args)
   },
-  handleMouseOver(state: MouseStateType & S, ...args: P): void {
+  handleMouseOver(state: Readonly<MouseStateType> & S, ...args: P): void {
     if (state.pressed === 0) return
     this.dispatch[EventEnum.MOUSE_OVER][state.pressed](state, ...args)
   },
-  handleMouseOut(state: MouseStateType & S, ...args: P): void {
+  handleMouseOut(state: Readonly<MouseStateType> & S, ...args: P): void {
     if (state.pressed === 0) return
     this.dispatch[EventEnum.MOUSE_OUT][state.pressed](state, ...args)
   },
