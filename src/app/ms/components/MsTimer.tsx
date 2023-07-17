@@ -15,14 +15,14 @@ type Props = HTMLAttributes<HTMLSpanElement> & {
 
 const MsTimer: React.FC<Props> = ({ interval, limit, mode, ...props }) => {
   // data
-  const intervalMs = (() => {
+  const intervalMs: number = (() => {
     const match = /^([0-9]+(?:\.[0-9]*)?)\s*(.*s)?$/.exec(interval.trim()) || []
     const num = (match[1] && parseFloat(match[1])) || 1000
     const mult = (match[2] && timeUnitTbl[match[2]]) || 1
     return num * mult
   })()
   const [count, setCount] = useState(0)
-  const innerMode = (() => {
+  const innerMode: TimerModeType = (() => {
     if (mode !== TimerModeEnum.RUNNING) return mode
     if (limit <= 0) return mode
     if (count < limit) return mode
@@ -30,8 +30,8 @@ const MsTimer: React.FC<Props> = ({ interval, limit, mode, ...props }) => {
   })()
 
   // update counter
-  const update = useCallback(
-    (newCount?: number) => {
+  const update = useCallback<(newCount?: number) => void>(
+    (newCount) => {
       // console.log('updateCount', 'count', count, 'newCount', newCount);
       setCount(newCount === undefined ? count + 1 : newCount)
     },

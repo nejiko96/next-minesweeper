@@ -5,7 +5,10 @@ type Props = InputHTMLAttributes<HTMLInputElement> & { label: string }
 const MsNumberInput: React.FC<Props> = ({ id, label, ...props }) => {
   return (
     <div className="mb-6 w-full px-3">
-      <label className="mb-2 block text-sm font-semibold tracking-wide" htmlFor={id}>
+      <label
+        className="mb-2 block text-sm font-semibold tracking-wide"
+        htmlFor={id}
+      >
         {label}
       </label>
       <input

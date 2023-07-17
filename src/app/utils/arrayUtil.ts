@@ -60,7 +60,7 @@ type RepeatedPermutation = {
 }
 const repeatedPermutation: RepeatedPermutation = <T>(
   obj: string | T[],
-  len: number
+  len: number,
 ): any => {
   if (typeof obj === 'string') {
     return repeatedPermutation([...obj], len).map((arr) => arr.join(''))
@@ -70,7 +70,7 @@ const repeatedPermutation: RepeatedPermutation = <T>(
     return [[]]
   }
   return arr.flatMap((elem) =>
-    repeatedPermutation(arr, len - 1).map((rp) => [elem, ...rp])
+    repeatedPermutation(arr, len - 1).map((rp) => [elem, ...rp]),
   )
 }
 
@@ -80,10 +80,10 @@ const fillArray = <T>(n: number, fn: (i: number) => T): T[] =>
 const fillArray2D = <T>(
   w: number,
   h: number,
-  fn: (i: number, j: number) => T
+  fn: (i: number, j: number) => T,
 ): T[][] =>
   Array.from({ length: h }, (_, i) =>
-    Array.from({ length: w }, (__, j) => fn(i, j))
+    Array.from({ length: w }, (__, j) => fn(i, j)),
   )
 
 export {

@@ -43,7 +43,8 @@ export type SizeStateType = {
   mines: number
 }
 
-export type GameStatusType = typeof GameStatusEnum[keyof typeof GameStatusEnum]
+export type GameStatusType =
+  (typeof GameStatusEnum)[keyof typeof GameStatusEnum]
 
 export type BoardStateType = {
   status: GameStatusType
@@ -82,4 +83,4 @@ export const TimerModeEnum = {
   STOPPED: 'stopped',
 } as const
 
-export type TimerModeType = typeof TimerModeEnum[keyof typeof TimerModeEnum]
+export type TimerModeType = (typeof TimerModeEnum)[keyof typeof TimerModeEnum]

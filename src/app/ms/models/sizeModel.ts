@@ -47,7 +47,7 @@ const minesDef = (n: number): SizeRangeType => {
 
 const adjustParam = (
   value: number | undefined,
-  rng: Readonly<SizeRangeType>
+  rng: Readonly<SizeRangeType>,
 ): number =>
   value === undefined
     ? rng.default

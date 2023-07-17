@@ -39,7 +39,9 @@ const timerModeTbl: Readonly<Record<GameStatusType, TimerModeType>> = {
   [GameStatusEnum.GAMEOVER]: TimerModeEnum.STOPPED,
 }
 
-const PreventContextMenu: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const PreventContextMenu: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   // disable context menu
   const node = useRef<HTMLDivElement>(null)
   const handleContextMenu: (e: MouseEvent) => void = (e) => e.preventDefault()
@@ -86,7 +88,8 @@ const MsGame: React.FC<Props> = ({ settings: { lang, theme, board } }) => {
   return (
     <PreventContextMenu>
       <div className={classes.container}>
-        {locale.remain1} <span className={classes['text-box']}>{remain}</span> {locale.remain2}
+        {locale.remain1} <span className={classes['text-box']}>{remain}</span>{' '}
+        {locale.remain2}
         <span className="w-5"></span>
         {locale.timer1}{' '}
         <MsTimer

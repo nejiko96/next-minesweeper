@@ -20,7 +20,7 @@ const relatives = (
   state: GameModelStateType,
   i: number,
   j: number,
-  diffs: number[][]
+  diffs: number[][],
 ): number[][] =>
   diffs
     .map(([di, dj]) => [i + di, j + dj])
@@ -29,7 +29,7 @@ const relatives = (
 const surroundings = (
   state: GameModelStateType,
   i: number,
-  j: number
+  j: number,
 ): number[][] =>
   relatives(state, i, j, [
     [-1, -1],
@@ -45,7 +45,7 @@ const surroundings = (
 const neighbors = (
   state: GameModelStateType,
   i: number,
-  j: number
+  j: number,
 ): number[][] =>
   relatives(state, i, j, [
     [-1, -1],
@@ -62,7 +62,7 @@ const neighbors = (
 const generateMines = (
   state: GameModelStateType,
   i: number,
-  j: number
+  j: number,
 ): void => {
   state.minePos = {}
   const w = state.width
@@ -112,7 +112,7 @@ const toggleMark = (state: GameModelStateType, i: number, j: number): void => {
 const postOpen = (
   state: GameModelStateType,
   i: number,
-  j: number
+  j: number,
 ): number[][] => {
   const surr = surroundings(state, i, j)
   const hint = surr.filter((pos) => state.minePos[pos.toString()]).length
@@ -189,7 +189,7 @@ const initAll = (param: SizeSettingType): GameModelStateType => {
 const handleLeftMouseDown = (
   state: GameModelStateType,
   i: number,
-  j: number
+  j: number,
 ): void => {
   if (!isEnabled(state)) {
     return
@@ -200,7 +200,7 @@ const handleLeftMouseDown = (
 const handleLeftMouseOver = (
   state: GameModelStateType,
   i: number,
-  j: number
+  j: number,
 ): void => {
   if (!isEnabled(state)) {
     return
@@ -211,7 +211,7 @@ const handleLeftMouseOver = (
 const handleLeftMouseOut = (
   state: GameModelStateType,
   i: number,
-  j: number
+  j: number,
 ): void => {
   if (!isEnabled(state)) {
     return
@@ -222,7 +222,7 @@ const handleLeftMouseOut = (
 const handleLeftMouseUp = (
   state: GameModelStateType,
   i: number,
-  j: number
+  j: number,
 ): void => {
   if (!isEnabled(state)) {
     return
@@ -242,7 +242,7 @@ const handleLeftMouseUp = (
 const handleRightMouseDown = (
   state: GameModelStateType,
   i: number,
-  j: number
+  j: number,
 ): void => {
   if (!isEnabled(state)) {
     return
@@ -260,7 +260,7 @@ const handleRightMouseUp = noop
 const handleBothMouseDown = (
   state: GameModelStateType,
   i: number,
-  j: number
+  j: number,
 ): void => {
   if (!isEnabled(state)) {
     return
@@ -273,7 +273,7 @@ const handleBothMouseDown = (
 const handleBothMouseOver = (
   state: GameModelStateType,
   i: number,
-  j: number
+  j: number,
 ): void => {
   if (!isEnabled(state)) {
     return
@@ -286,7 +286,7 @@ const handleBothMouseOver = (
 const handleBothMouseOut = (
   state: GameModelStateType,
   i: number,
-  j: number
+  j: number,
 ): void => {
   if (!isEnabled(state)) {
     return
@@ -299,7 +299,7 @@ const handleBothMouseOut = (
 const handleBothMouseUp = (
   state: GameModelStateType,
   i: number,
-  j: number
+  j: number,
 ): void => {
   if (!isEnabled(state)) {
     return
@@ -318,7 +318,7 @@ const handleBothMouseUp = (
 const handleTouchStart = (
   state: GameModelStateType,
   i: number,
-  j: number
+  j: number,
 ): void => {
   if (isHidden(state, i, j)) {
     handleLeftMouseDown(state, i, j)
@@ -330,7 +330,7 @@ const handleTouchStart = (
 const handleTouchEnd = (
   state: GameModelStateType,
   i: number,
-  j: number
+  j: number,
 ): void => {
   if (isHidden(state, i, j)) {
     handleLeftMouseUp(state, i, j)
@@ -342,7 +342,7 @@ const handleTouchEnd = (
 const handleLongPress = (
   state: GameModelStateType,
   i: number,
-  j: number
+  j: number,
 ): void => {
   if (isHidden(state, i, j)) {
     handleRightMouseDown(state, i, j)

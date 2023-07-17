@@ -45,7 +45,7 @@ const pressedTbl: Readonly<Record<number, number>> = {
 }
 
 const makeDispatch = <S, P extends unknown[]>(
-  model: TgtModelType<S, P>
+  model: TgtModelType<S, P>,
 ): TgtHandlerType<S, P>[][] => [
   [
     noop,

@@ -52,7 +52,9 @@ const MsSettings: React.FC<Props> = ({ onClose }) => {
   const handleClose = () => onClose()
   const handleLangChange: React.ChangeEventHandler<HTMLSelectElement> = (ev) =>
     dispatch(changeLang(ev.target.value))
-  const handleThemeChange: React.ChangeEventHandler<HTMLSelectElement> = (ev) => {
+  const handleThemeChange: React.ChangeEventHandler<HTMLSelectElement> = (
+    ev,
+  ) => {
     const [newName, newSize] = ev.target.value.split('_')
     dispatch(
       changeTheme({
@@ -63,15 +65,21 @@ const MsSettings: React.FC<Props> = ({ onClose }) => {
   }
   const handleLevelChange: React.ChangeEventHandler<HTMLSelectElement> = (ev) =>
     dispatch(changeLevel(ev.target.value))
-  const handleWidthChange: React.ChangeEventHandler<HTMLInputElement> = (ev) => {
+  const handleWidthChange: React.ChangeEventHandler<HTMLInputElement> = (
+    ev,
+  ) => {
     const newWidth = ev.target.value
     dispatch(changeWidth(newWidth && Number(newWidth)))
   }
-  const handleHeightChange: React.ChangeEventHandler<HTMLInputElement> = (ev) => {
+  const handleHeightChange: React.ChangeEventHandler<HTMLInputElement> = (
+    ev,
+  ) => {
     const newHeight = ev.target.value
     dispatch(changeHeight(newHeight && Number(newHeight)))
   }
-  const handleMinesChange: React.ChangeEventHandler<HTMLInputElement> = (ev) => {
+  const handleMinesChange: React.ChangeEventHandler<HTMLInputElement> = (
+    ev,
+  ) => {
     const newMines = ev.target.value
     dispatch(changeMines(newMines && Number(newMines)))
   }

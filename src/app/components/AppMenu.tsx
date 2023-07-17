@@ -69,7 +69,8 @@ const AppMenu: React.FC<Props> = ({ className }) => {
                       'group flex w-full items-center rounded-md px-2 py-2 text-sm',
                       {
                         'text-gray-400': item.path === pathname,
-                        'bg-sky-500 text-white': item.path !== pathname && active,
+                        'bg-sky-500 text-white':
+                          item.path !== pathname && active,
                         'text-gray-900': item.path !== pathname && !active,
                       },
                     )}

@@ -15,7 +15,10 @@ type Props = SelectHTMLAttributes<HTMLSelectElement> & {
 const MsSelectBox: React.FC<Props> = ({ id, label, options, ...props }) => {
   return (
     <div className="mb-6 w-full px-3">
-      <label className="mb-2 block text-sm font-semibold tracking-wide" htmlFor={id}>
+      <label
+        className="mb-2 block text-sm font-semibold tracking-wide"
+        htmlFor={id}
+      >
         {label}
       </label>
       <div className="relative">
