@@ -2,7 +2,7 @@ import { InputHTMLAttributes } from 'react'
 
 type Props = InputHTMLAttributes<HTMLInputElement> & { label: string }
 
-const MsNumberInput: React.FC<Props> = ({ id, label, ...props }) => {
+const MsNumberInput: React.FC<Props> = ({ id, label, value, ...props }) => {
   return (
     <div className="mb-6 w-full px-3">
       <label
@@ -14,6 +14,7 @@ const MsNumberInput: React.FC<Props> = ({ id, label, ...props }) => {
       <input
         className="block w-full appearance-none rounded border border-gray-200 bg-gray-200 px-4 py-1 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
         type="number"
+        value={value || ''}
         {...props}
       />
     </div>

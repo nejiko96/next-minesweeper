@@ -1,17 +1,18 @@
 'use client'
 
-import MsGame from '@/modules/minesweeper/components/MsGame'
-import MsSettings from '@/modules/minesweeper/components/MsSettings'
-import { selectSettings } from '@/modules/minesweeper/store/settingsSlice'
+import { useState } from 'react'
+
 import { faGear } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Transition } from '@headlessui/react'
-import { useState } from 'react'
-import { useSelector } from 'react-redux'
+
+import MsGame from '@/modules/minesweeper/components/MsGame'
+import MsSettings from '@/modules/minesweeper/components/MsSettings'
+import { useSettings } from '@/modules/minesweeper/store/settingsSlice'
 
 const MsHome: React.FC = () => {
   // connect to store
-  const settings = useSelector(selectSettings)
+  const { settings } = useSettings()
 
   // data
   const [settingsOpen, setSettingsOpen] = useState(false)

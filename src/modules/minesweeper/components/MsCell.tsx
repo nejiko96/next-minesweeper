@@ -2,8 +2,8 @@ import classNames from 'classnames'
 import { useEffect, useState } from 'react'
 
 import { styleIdx } from '../models/cellModel'
-import { GridClickType, GridPosType } from '../types'
-import classes from './MsCell.module.css'
+import classes from '../styles/MsCell.module.css'
+import type { GridClickActionType, GridPosActionType } from '../types'
 
 const calcBgPos: (s: number, v: number) => string = (s, v) => {
   const i = styleIdx(v)
@@ -25,13 +25,13 @@ type Props = {
   row: number
   col: number
   value: number
-  onMouseDown: (params: GridClickType) => void
-  onMouseUp: (params: GridPosType) => void
-  onMouseOut: (params: GridPosType) => void
-  onMouseOver: (params: GridPosType) => void
-  onTouchStart: (params: GridPosType) => void
-  onTouchEnd: (params: GridPosType) => void
-  onLongPress: (params: GridPosType) => void
+  onMouseDown: GridClickActionType
+  onMouseUp: GridPosActionType
+  onMouseOut: GridPosActionType
+  onMouseOver: GridPosActionType
+  onTouchStart: GridPosActionType
+  onTouchEnd: GridPosActionType
+  onLongPress: GridPosActionType
 }
 
 const MsCell: React.FC<Props> = ({

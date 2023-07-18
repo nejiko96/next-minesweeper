@@ -1,5 +1,5 @@
 import { noop } from '@/core/utils'
-import { MouseStateType } from '../types'
+import type { MouseStateType } from '../types'
 
 type TgtHandlerType<S, P extends unknown[]> = (state: S, ...args: P) => void
 
@@ -45,7 +45,7 @@ const pressedTbl: Readonly<Record<number, number>> = {
 }
 
 const makeDispatch: <S, P extends unknown[]>(
-  model: TgtModelType<S, P>
+  model: TgtModelType<S, P>,
 ) => TgtHandlerType<S, P>[][] = (model) => [
   [
     noop,

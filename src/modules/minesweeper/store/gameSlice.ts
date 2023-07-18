@@ -1,12 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { bindActionCreators, createSlice } from '@reduxjs/toolkit'
+import { useDispatch, useSelector } from 'react-redux'
 
 import * as gameModel from '../models/gameModel'
 import { makeWrapper } from '../models/mouseEventModel'
-import { GameStoreStateType } from '../types'
+import type { GameStoreStateType } from '../types'
 
 const mouseModel = makeWrapper(gameModel)
 
-export const gameSlice = createSlice({
+const gameSlice = createSlice({
   name: 'game',
   initialState: {
     ...gameModel.initAll({ level: 'easy' }),
@@ -62,18 +63,14 @@ export const gameSlice = createSlice({
   },
 })
 
-export const {
-  changeSize,
-  restart,
-  mouseDown,
-  mouseUp,
-  mouseOver,
-  mouseOut,
-  touchStart,
-  touchEnd,
-  longPress,
-} = gameSlice.actions
-
-export const selectGame = (state: { game: GameStoreStateType }) => state.game
+export const useGame = () => {
+  const game = useSelector((state: { game: GameStoreStateType }) => state.game)
+  const dispatch = useDispatch()
+  const actions = bindActionCreators(gameSlice.actions, dispatch)
+  return {
+    game,
+    ...actions,
+  }
+}
 
 export default gameSlice.reducer

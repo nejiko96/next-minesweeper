@@ -1,6 +1,6 @@
 import React from 'react'
 
-import classes from './MsBoard.module.css'
+import classes from '../styles/MsBoard.module.css'
 
 type Props = {
   grid: number[][]
@@ -25,7 +25,7 @@ const MsBoard: React.FC<Props> = ({ grid, overlay, children }) => {
             .concat(<br key={i} />),
         )}
       </div>
-      {overlay ? <div className={classes['cells-overlay']} /> : null}
+      {overlay && <div className={classes['cells-overlay']} />}
     </div>
   )
 }

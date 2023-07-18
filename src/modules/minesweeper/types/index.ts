@@ -74,6 +74,10 @@ export type GridPosType = {
 
 export type GridClickType = { button: number } & GridPosType
 
+export type GridPosActionType = (params: GridPosType) => unknown
+
+export type GridClickActionType = (params: GridClickType) => unknown
+
 //------------------------------------------------------------------------------
 // Timer Constants
 //------------------------------------------------------------------------------
