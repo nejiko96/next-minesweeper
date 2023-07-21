@@ -1,6 +1,7 @@
 import { HTMLAttributes, useCallback, useEffect, useRef, useState } from 'react'
 
-import { TimerModeEnum, TimerModeType } from '../types'
+import type { TimerModeType } from '../types'
+import { TimerModeEnum } from '../types'
 
 const timeUnitTbl: Readonly<Record<string, number>> = {
   ms: 1,

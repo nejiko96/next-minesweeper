@@ -1,4 +1,4 @@
-import { SizeSettingType, SizeStateType } from '../types'
+import type { SizeSettingType, SizeStateType } from '../types'
 
 type SizeRangeType = Readonly<{
   min: number
@@ -47,14 +47,14 @@ const minesDef: (n: number) => SizeRangeType = (n) => {
 
 const adjustParam: (value: number | undefined, rng: SizeRangeType) => number = (
   value,
-  rng
+  rng,
 ) =>
   value === undefined
     ? rng.default
     : Math.min(Math.max(value | 0, rng.min), rng.max)
 
 const calcCustomSize: (param: Readonly<SizeSettingType>) => SizeStateType = (
-  param
+  param,
 ) => {
   const width = adjustParam(param.width, widthDef)
   const height = adjustParam(param.height, heightDef)
@@ -62,7 +62,9 @@ const calcCustomSize: (param: Readonly<SizeSettingType>) => SizeStateType = (
   return { width, height, mines }
 }
 
-const calcSize: (param: Readonly<SizeSettingType>) => SizeStateType = (param) =>
+const calcSize: (param: Readonly<SizeSettingType>) => SizeStateType = (
+  param,
+) =>
   param.level === 'custom' ? calcCustomSize(param) : stdSizeDef[param.level]
 
 export { calcSize }

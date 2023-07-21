@@ -1,6 +1,7 @@
-import AppLayout from '@/core/container/AppLayout'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+
+import AppLayout from '@/core/container/AppLayout'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })

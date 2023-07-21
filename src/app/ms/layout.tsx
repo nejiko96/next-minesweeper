@@ -1,12 +1,11 @@
 'use client'
 
-import store from '@/modules/minesweeper/store'
-import { Provider } from 'react-redux'
+import MsStoreProvider from '@/modules/minesweeper/container/MsStoreProvider'
 
 type Props = { children: React.ReactNode }
 
 const MsLayout: React.FC<Props> = ({ children }) => {
-  return <Provider store={store}>{children}</Provider>
+  return <MsStoreProvider>{children}</MsStoreProvider>
 }
 
 export default MsLayout

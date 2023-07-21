@@ -1,12 +1,13 @@
 'use client'
 
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Menu, Transition } from '@headlessui/react'
 import classNames from 'classnames'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Fragment, HTMLAttributes } from 'react'
+
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Menu, Transition } from '@headlessui/react'
 
 const menuItems = [
   {
@@ -37,7 +38,7 @@ const menuItems = [
     title: 'Flag Quiz',
     path: '/flag_quiz',
   },
-]
+] as const
 
 type Props = HTMLAttributes<HTMLDivElement>
 

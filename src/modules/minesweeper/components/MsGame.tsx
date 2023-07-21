@@ -1,33 +1,20 @@
 import { useEffect, useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-
-import {
-  changeSize,
-  longPress,
-  mouseDown,
-  mouseOut,
-  mouseOver,
-  mouseUp,
-  restart,
-  selectGame,
-  touchEnd,
-  touchStart,
-} from '../store/gameSlice'
-import {
-  GameStatusEnum,
-  GameStatusFlags,
-  GameStatusType,
-  GridClickType,
-  GridPosType,
-  SizeSettingType,
-  ThemeSettingType,
-  TimerModeEnum,
-  TimerModeType,
-} from '../types'
-import { initLocale } from '../utils/locale'
-import classes from './MsGame.module.css'
 
 import { Transition } from '@headlessui/react'
+
+import { useGame } from '../store/gameSlice'
+import classes from '../styles/MsGame.module.css'
+import type {
+  GameStatusType,
+  GridClickActionType,
+  GridPosActionType,
+  SizeSettingType,
+  ThemeSettingType,
+  TimerModeType,
+} from '../types'
+import { GameStatusEnum, GameStatusFlags, TimerModeEnum } from '../types'
+import { initLocale } from '../utils/locale'
+
 import MsBoard from './MsBoard'
 import MsCell from './MsCell'
 import MsTimer from './MsTimer'
@@ -64,8 +51,18 @@ type Props = {
 
 const MsGame: React.FC<Props> = ({ settings: { lang, theme, board } }) => {
   // connect to store
-  const game = useSelector(selectGame)
-  const dispatch = useDispatch()
+  const {
+    game,
+    changeSize,
+    restart,
+    mouseDown,
+    mouseUp,
+    mouseOver,
+    mouseOut,
+    touchStart,
+    touchEnd,
+    longPress,
+  } = useGame()
 
   // data
   const locale = initLocale(lang)
@@ -74,23 +71,23 @@ const MsGame: React.FC<Props> = ({ settings: { lang, theme, board } }) => {
 
   // game events
   useEffect(() => {
-    dispatch(changeSize(board))
-  }, [board, dispatch])
-  const handleRestart = () => dispatch(restart())
-  const handleMouseDown = (params: GridClickType) => dispatch(mouseDown(params))
-  const handleMouseUp = (params: GridPosType) => dispatch(mouseUp(params))
-  const handleMouseOver = (params: GridPosType) => dispatch(mouseOver(params))
-  const handleMouseOut = (params: GridPosType) => dispatch(mouseOut(params))
-  const handleTouchStart = (params: GridPosType) => dispatch(touchStart(params))
-  const handleTouchEnd = (params: GridPosType) => dispatch(touchEnd(params))
-  const handleLongPress = (params: GridPosType) => dispatch(longPress(params))
+    changeSize(board)
+  }, [board])
+  const handleRestart: () => void = () => restart()
+  const handleMouseDown: GridClickActionType = (params) => mouseDown(params)
+  const handleMouseUp: GridPosActionType = (params) => mouseUp(params)
+  const handleMouseOver: GridPosActionType = (params) => mouseOver(params)
+  const handleMouseOut: GridPosActionType = (params) => mouseOut(params)
+  const handleTouchStart: GridPosActionType = (params) => touchStart(params)
+  const handleTouchEnd: GridPosActionType = (params) => touchEnd(params)
+  const handleLongPress: GridPosActionType = (params) => longPress(params)
 
   return (
     <PreventContextMenu>
       <div className={classes.container}>
         {locale.remain1} <span className={classes['text-box']}>{remain}</span>{' '}
         {locale.remain2}
-        <span className="w-5"></span>
+        <span className="w-5" />
         {locale.timer1}{' '}
         <MsTimer
           className={classes['text-box']}
@@ -99,7 +96,7 @@ const MsGame: React.FC<Props> = ({ settings: { lang, theme, board } }) => {
           mode={timerModeTbl[game.status]}
         />{' '}
         {locale.timer2}
-        <span className="w-5"></span>
+        <span className="w-5" />
         <Transition
           as="span"
           show={game.status === GameStatusEnum.CLEARED}

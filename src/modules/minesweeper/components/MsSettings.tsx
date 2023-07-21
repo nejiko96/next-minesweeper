@@ -1,17 +1,8 @@
 import { faGear, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Transition } from '@headlessui/react'
-import { useDispatch, useSelector } from 'react-redux'
 
-import {
-  changeHeight,
-  changeLang,
-  changeLevel,
-  changeMines,
-  changeTheme,
-  changeWidth,
-  selectSettings,
-} from '../store/settingsSlice'
+import { useSettings } from '../store/settingsSlice'
 
 import MsNumberInput from './MsNumberInput'
 import MsSelectBox from './MsSelectBox'
@@ -42,46 +33,51 @@ type Props = {
 const MsSettings: React.FC<Props> = ({ onClose }) => {
   // connect to store
   const {
-    lang,
-    theme: { name, size },
-    board: { level, width, height, mines },
-  } = useSelector(selectSettings)
-  const dispatch = useDispatch()
+    settings: {
+      lang,
+      theme: { name, size },
+      board: { level, width, height, mines },
+    },
+    changeLang,
+    changeTheme,
+    changeLevel,
+    changeWidth,
+    changeHeight,
+    changeMines,
+  } = useSettings()
 
   // events
   const handleClose = () => onClose()
   const handleLangChange: React.ChangeEventHandler<HTMLSelectElement> = (ev) =>
-    dispatch(changeLang(ev.target.value))
+    changeLang(ev.target.value)
   const handleThemeChange: React.ChangeEventHandler<HTMLSelectElement> = (
     ev,
   ) => {
     const [newName, newSize] = ev.target.value.split('_')
-    dispatch(
-      changeTheme({
-        name: newName,
-        size: Number(newSize),
-      }),
-    )
+    changeTheme({
+      name: newName,
+      size: Number(newSize),
+    })
   }
   const handleLevelChange: React.ChangeEventHandler<HTMLSelectElement> = (ev) =>
-    dispatch(changeLevel(ev.target.value))
+    changeLevel(ev.target.value)
   const handleWidthChange: React.ChangeEventHandler<HTMLInputElement> = (
     ev,
   ) => {
     const newWidth = ev.target.value
-    dispatch(changeWidth(newWidth && Number(newWidth)))
+    changeWidth(newWidth && Number(newWidth))
   }
   const handleHeightChange: React.ChangeEventHandler<HTMLInputElement> = (
     ev,
   ) => {
     const newHeight = ev.target.value
-    dispatch(changeHeight(newHeight && Number(newHeight)))
+    changeHeight(newHeight && Number(newHeight))
   }
   const handleMinesChange: React.ChangeEventHandler<HTMLInputElement> = (
     ev,
   ) => {
     const newMines = ev.target.value
-    dispatch(changeMines(newMines && Number(newMines)))
+    changeMines(newMines && Number(newMines))
   }
 
   return (

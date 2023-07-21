@@ -1,8 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { bindActionCreators, createSlice } from '@reduxjs/toolkit'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { SettingsType } from '../types'
+import type { SettingsType } from '../types'
 
-export const settingsSlice = createSlice({
+const settingsSlice = createSlice({
   name: 'settings',
   initialState: {
     lang: 'en',
@@ -36,16 +37,16 @@ export const settingsSlice = createSlice({
   },
 })
 
-export const {
-  changeLang,
-  changeTheme,
-  changeLevel,
-  changeWidth,
-  changeHeight,
-  changeMines,
-} = settingsSlice.actions
-
-export const selectSettings = (state: { settings: SettingsType }) =>
-  state.settings
+export const useSettings = () => {
+  const settings = useSelector(
+    (state: { settings: SettingsType }) => state.settings,
+  )
+  const dispatch = useDispatch()
+  const actions = bindActionCreators(settingsSlice.actions, dispatch)
+  return {
+    settings,
+    ...actions,
+  }
+}
 
 export default settingsSlice.reducer

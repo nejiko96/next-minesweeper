@@ -1,7 +1,8 @@
+import Link from 'next/link'
+
 import AppMenu from '@/core/components/AppMenu'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Link from 'next/link'
 
 type Props = { children: React.ReactNode }
 

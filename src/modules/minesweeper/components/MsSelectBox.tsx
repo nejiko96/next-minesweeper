@@ -1,6 +1,7 @@
+import { SelectHTMLAttributes } from 'react'
+
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { SelectHTMLAttributes } from 'react'
 
 type SelectOptionType = Readonly<{
   id: string
