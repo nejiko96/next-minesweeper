@@ -13,9 +13,9 @@ const AppLayout: React.FC<Props> = ({ children }) => {
         <nav className="bg-sky-500 text-white">
           <div className="container mx-auto flex h-16 items-center justify-between px-2 py-4">
             <h1>
-              <Link href="/" className="mr-2 text-xl font-semibold">
+              <Link href="/" className="text-xl font-semibold">
                 Next.js demo page
-              </Link>
+              </Link>{' '}
               <a
                 href="https://github.com/nejiko96/next-minesweeper"
                 target="_blank"
