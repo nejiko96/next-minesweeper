@@ -8,7 +8,7 @@ https://next-minesweeper-flame.vercel.app/
 
 ## Documents
 
-- [Development](Development.md)
+- [Development Guide](https://github.com/nejiko96/next-minesweeper/wiki/Development-Guide)
 
 ---
 
