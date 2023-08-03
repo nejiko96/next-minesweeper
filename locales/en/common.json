@@ -1,0 +1,17 @@
+{
+  "header": {
+    "title": "Next.js demo page"
+  },
+  "menu": {
+    "title": "Menu",
+    "items": {
+      "ms": "Minesweeper",
+      "cat": "Cat API",
+      "wordle": "Wordle Helper",
+      "nerdle": "Nerdle Helper",
+      "slide": "Slide Puzzle",
+      "flag_training": "Flag Training",
+      "flag_quiz": "Flag Quiz"
+    }
+  }
+}

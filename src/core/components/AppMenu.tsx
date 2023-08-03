@@ -8,34 +8,28 @@ import { Fragment, HTMLAttributes } from 'react'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Menu, Transition } from '@headlessui/react'
+import useTranslation from 'next-translate/useTranslation'
 
 const menuItems = [
   {
-    title: 'Minesweeper',
     path: '/ms',
   },
   {
-    title: 'Cat API',
     path: '/cat',
   },
   {
-    title: 'Wordle Helper',
     path: '/wordle',
   },
   {
-    title: 'Nerdle Helper',
     path: '/nerdle',
   },
   {
-    title: 'Slide Puzzle',
     path: '/slide',
   },
   {
-    title: 'Flag Training',
     path: '/flag_training',
   },
   {
-    title: 'Flag Quiz',
     path: '/flag_quiz',
   },
 ] as const
@@ -43,13 +37,17 @@ const menuItems = [
 type Props = HTMLAttributes<HTMLDivElement>
 
 const AppMenu: React.FC<Props> = ({ className }) => {
-  // app router pathname
-  const pathname = usePathname()
+  const { t, lang } = useTranslation('common')
+  // get pathname from app router
+  // and remove leading '/[lang]'
+  const pathname = usePathname().split('/', 3)[2]
 
   return (
     <Menu as="div" className={classNames('relative', className)}>
       <Menu.Button className="rounded-md bg-black/0 px-4 py-2 hover:bg-black/30">
-        Menu <FontAwesomeIcon icon={faAngleDown} />
+        <>
+          {t`menu.title`} <FontAwesomeIcon icon={faAngleDown} />
+        </>
       </Menu.Button>
       <Transition
         as={Fragment}
@@ -75,9 +73,9 @@ const AppMenu: React.FC<Props> = ({ className }) => {
                         'text-gray-900': item.path !== pathname && !active,
                       },
                     )}
-                    href={item.path}
+                    href={`/${lang}${item.path}`}
                   >
-                    {item.title}
+                    {t('menu.items' + item.path.replaceAll('/', '.'))}
                   </Link>
                 )}
               </Menu.Item>
