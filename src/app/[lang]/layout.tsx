@@ -1,5 +1,9 @@
+import classNames from 'classnames'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+
+// https://github.com/FortAwesome/react-fontawesome/issues/134
+import '@fortawesome/fontawesome-svg-core/styles.css'
 
 import AppLayout from '@/core/container/AppLayout'
 import './globals.css'
@@ -43,7 +47,12 @@ const RootLayout: React.FC<Props> = ({ children }) => {
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
       </head>
-      <body className={inter.className}>
+      <body
+        className={classNames(
+          'bg-gray-100 dark:bg-gray-800 dark:text-white',
+          inter.className,
+        )}
+      >
         <AppLayout>{children}</AppLayout>
       </body>
     </html>
