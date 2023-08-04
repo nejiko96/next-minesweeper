@@ -1,7 +1,7 @@
+import useTranslation from 'next-translate/useTranslation'
 import { useEffect, useRef } from 'react'
 
 import { Transition } from '@headlessui/react'
-import useTranslation from 'next-translate/useTranslation'
 
 import { useGame } from '../store/gameSlice'
 import classes from '../styles/MsGame.module.css'

@@ -1,9 +1,9 @@
+import useTranslation from 'next-translate/useTranslation'
 import { useState } from 'react'
 
 import { faCircleInfo, faGear } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Transition } from '@headlessui/react'
-import useTranslation from 'next-translate/useTranslation'
 
 import MsGame from '@/modules/minesweeper/components/MsGame'
 import MsHelpDialog from '@/modules/minesweeper/components/MsHelpDialog'

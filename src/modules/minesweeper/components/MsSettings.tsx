@@ -1,7 +1,8 @@
+import useTranslation from 'next-translate/useTranslation'
+
 import { faGear, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Transition } from '@headlessui/react'
-import useTranslation from 'next-translate/useTranslation'
 
 import { useSettings } from '../store/settingsSlice'
 
