@@ -1,14 +1,15 @@
 'use client'
 
 import classNames from 'classnames'
+import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Fragment, HTMLAttributes } from 'react'
+import type { HTMLAttributes } from 'react'
+import { Fragment } from 'react'
 
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Menu, Transition } from '@headlessui/react'
-import useTranslation from 'next-translate/useTranslation'
 
 const menuItems = [
   {
@@ -40,7 +41,7 @@ const AppMenu: React.FC<Props> = ({ className }) => {
   const { t, lang } = useTranslation('common')
   // get pathname from app router
   // and remove leading '/[lang]'
-  const pathname = usePathname().split('/', 3)[2]
+  const pathname = '/' + (usePathname().split('/', 3)[2] ?? '')
 
   return (
     <Menu as="div" className={classNames('relative', className)}>

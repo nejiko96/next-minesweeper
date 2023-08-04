@@ -1,8 +1,8 @@
+import useTranslation from 'next-translate/useTranslation'
 import Link from 'next/link'
 
-import useTranslation from 'next-translate/useTranslation'
-
 import AppMenu from '@/core/components/AppMenu'
+import LanguageToggle from '@/core/components/LanguageToggle'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -34,6 +34,7 @@ const AppLayout: React.FC<Props> = ({ children }) => {
 
             <div className="flex items-center">
               <AppMenu className="mr-4" />
+              <LanguageToggle className="" />
             </div>
           </div>
         </nav>
