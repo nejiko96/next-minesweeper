@@ -1,4 +1,5 @@
-import { HTMLAttributes, useCallback, useEffect, useRef, useState } from 'react'
+import type { HTMLAttributes } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import type { TimerModeType } from '../types'
 import { TimerModeEnum } from '../types'

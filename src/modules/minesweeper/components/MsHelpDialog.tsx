@@ -1,7 +1,7 @@
+import useTranslation from 'next-translate/useTranslation'
 import { Fragment } from 'react'
 
 import { Dialog, Transition } from '@headlessui/react'
-import useTranslation from 'next-translate/useTranslation'
 
 type Props = {
   isOpen: boolean
