@@ -84,7 +84,7 @@ const MsSettings: React.FC<Props> = ({ onClose }) => {
     <>
       <div
         id="drawer-right"
-        className="--fixed --h-screen --transform-none --transition-transform overflow-y-auto overflow-x-hidden bg-white p-4 dark:bg-black"
+        className="h-full overflow-y-auto overflow-x-hidden bg-white p-4 dark:bg-black"
         tabIndex={-1}
         aria-labelledby="drawer-right-label"
         aria-modal="true"
