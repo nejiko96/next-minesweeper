@@ -17,7 +17,7 @@ function getUserLocale(request: NextRequest) {
 
 export function middleware(request: NextRequest) {
   const { pathname, locale, search } = request.nextUrl
-  // console.log([pathname, locale, search])
+  console.log([pathname, locale, search])
 
   // Always include the language prefix in the pathname
   // (to inform next-translate about the correct language)
