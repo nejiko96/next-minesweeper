@@ -1,3 +1,5 @@
+import useTranslation from 'next-translate/useTranslation'
+
 import { faGear, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Transition } from '@headlessui/react'
@@ -7,10 +9,10 @@ import { useSettings } from '../store/settingsSlice'
 import MsNumberInput from './MsNumberInput'
 import MsSelectBox from './MsSelectBox'
 
-const langOptions = [
-  { id: 'en', name: 'English' },
-  { id: 'ja', name: '日本語' },
-] as const
+// const langOptions = [
+//   { id: 'en', name: 'English' },
+//   { id: 'ja', name: '日本語' },
+// ] as const
 
 const themeOptions = [
   { id: 'green_32', name: 'green(32px)' },
@@ -31,14 +33,17 @@ type Props = {
 }
 
 const MsSettings: React.FC<Props> = ({ onClose }) => {
+  // translation
+  const { t } = useTranslation('ms')
+
   // connect to store
   const {
     settings: {
-      lang,
+      // lang,
       theme: { name, size },
       board: { level, width, height, mines },
     },
-    changeLang,
+    // changeLang,
     changeTheme,
     changeLevel,
     changeWidth,
@@ -48,8 +53,8 @@ const MsSettings: React.FC<Props> = ({ onClose }) => {
 
   // events
   const handleClose = () => onClose()
-  const handleLangChange: React.ChangeEventHandler<HTMLSelectElement> = (ev) =>
-    changeLang(ev.target.value)
+  // const handleLangChange: React.ChangeEventHandler<HTMLSelectElement> = (ev) =>
+  //   changeLang(ev.target.value)
   const handleThemeChange: React.ChangeEventHandler<HTMLSelectElement> = (
     ev,
   ) => {
@@ -94,8 +99,7 @@ const MsSettings: React.FC<Props> = ({ onClose }) => {
           id="drawer-right-label"
           className="mb-4 inline-flex items-center text-base font-semibold"
         >
-          <FontAwesomeIcon icon={faGear} />
-          Settings
+          <FontAwesomeIcon icon={faGear} /> {t`settings.title`}
         </span>
 
         <button
@@ -109,24 +113,24 @@ const MsSettings: React.FC<Props> = ({ onClose }) => {
         </button>
 
         <form className="w-full">
-          <MsSelectBox
+          {/* <MsSelectBox
             id="lang"
             value={lang}
             label="Language"
             options={langOptions}
             onChange={handleLangChange}
-          />
+          /> */}
           <MsSelectBox
             id="theme"
             value={`${name}_${size}`}
-            label="Theme"
+            label={t`settings.theme`}
             options={themeOptions}
             onChange={handleThemeChange}
           />
           <MsSelectBox
             id="level"
             value={level}
-            label="Level"
+            label={t`settings.level`}
             options={levelOptions}
             onChange={handleLevelChange}
           />
@@ -144,7 +148,7 @@ const MsSettings: React.FC<Props> = ({ onClose }) => {
               <MsNumberInput
                 id="width"
                 value={width}
-                label="Width"
+                label={t`settings.width`}
                 min="9"
                 max="30"
                 step="1"
@@ -154,7 +158,7 @@ const MsSettings: React.FC<Props> = ({ onClose }) => {
               <MsNumberInput
                 id="height"
                 value={height}
-                label="Height"
+                label={t`settings.height`}
                 min="9"
                 max="24"
                 step="1"
@@ -164,7 +168,7 @@ const MsSettings: React.FC<Props> = ({ onClose }) => {
               <MsNumberInput
                 id="mines"
                 value={mines}
-                label="Mines"
+                label={t`settings.mines`}
                 min="10"
                 max="999"
                 step="1"

@@ -1,0 +1,17 @@
+{
+  "header": {
+    "title": "Next.js デモページ"
+  },
+  "menu": {
+    "title": "メニュー",
+    "items": {
+      "ms": "マインスイーパー",
+      "cat": "ネコ画像API",
+      "wordle": "Wordleヘルパー",
+      "nerdle": "Nerdleヘルパー",
+      "slide": "スライドパズル",
+      "flag_training": "国旗暗記ツール",
+      "flag_quiz": "国旗当てクイズ"
+    }
+  }
+}

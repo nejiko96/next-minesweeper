@@ -1,3 +1,4 @@
+import useTranslation from 'next-translate/useTranslation'
 import { useEffect, useRef } from 'react'
 
 import { Transition } from '@headlessui/react'
@@ -13,7 +14,6 @@ import type {
   TimerModeType,
 } from '../types'
 import { GameStatusEnum, GameStatusFlags, TimerModeEnum } from '../types'
-import { initLocale } from '../utils/locale'
 
 import MsBoard from './MsBoard'
 import MsCell from './MsCell'
@@ -43,13 +43,15 @@ const PreventContextMenu: React.FC<{ children: React.ReactNode }> = ({
 
 type Props = {
   settings: {
-    lang: string
     theme: ThemeSettingType
     board: SizeSettingType
   }
 }
 
-const MsGame: React.FC<Props> = ({ settings: { lang, theme, board } }) => {
+const MsGame: React.FC<Props> = ({ settings: { theme, board } }) => {
+  // translation
+  const { t } = useTranslation('ms')
+
   // connect to store
   const {
     game,
@@ -65,7 +67,6 @@ const MsGame: React.FC<Props> = ({ settings: { lang, theme, board } }) => {
   } = useGame()
 
   // data
-  const locale = initLocale(lang)
   const remain = game.mines - Object.keys(game.markPos).length
   const overlay = (game.status & GameStatusFlags.ENABLED) > 0 && game.touch
 
@@ -85,24 +86,25 @@ const MsGame: React.FC<Props> = ({ settings: { lang, theme, board } }) => {
   return (
     <PreventContextMenu>
       <div className={classes.container}>
-        {locale.remain1} <span className={classes['text-box']}>{remain}</span>{' '}
-        {locale.remain2}
+        {t`game.remain.pre`}{' '}
+        <span className={classes['text-box']}>{remain}</span>{' '}
+        {t`game.remain.post`}
         <span className="w-5" />
-        {locale.timer1}{' '}
+        {t`game.timer.pre`}{' '}
         <MsTimer
           className={classes['text-box']}
           interval="1s"
           limit={999}
           mode={timerModeTbl[game.status]}
         />{' '}
-        {locale.timer2}
+        {t`game.timer.post`}
         <span className="w-5" />
         <Transition
           as="span"
           show={game.status === GameStatusEnum.CLEARED}
           enterTo={classes['pyonpyon-enter-active']}
         >
-          {locale.cleared}
+          {t`game.cleared`}
         </Transition>
         <br />
         <MsBoard grid={game.grid} overlay={overlay}>
@@ -126,7 +128,7 @@ const MsGame: React.FC<Props> = ({ settings: { lang, theme, board } }) => {
           type="button"
           onClick={handleRestart}
         >
-          {locale.retry}
+          {t`game.retry`}
         </button>
       </div>
     </PreventContextMenu>

@@ -1,0 +1,58 @@
+{
+  "view": {
+    "title": "Minesweeper Game",
+    "help": "Help",
+    "settings": "Settings"
+  },
+  "game": {
+    "remain": {
+      "pre": "",
+      "post": "mines"
+    },
+    "timer": {
+      "pre": "time: ",
+      "post": ""
+    },
+    "retry": "Retry",
+    "cleared": "Cleared!"
+  },
+  "help": {
+    "title": "How to Play Minesweeper",
+    "board": {
+      "title": "Game Board",
+      "description": "The Minesweeper game board consists of tiles arranged in a grid.\nSome of the tiles hide mines."
+    },
+    "objective": {
+      "title": "Objective",
+      "description": "Avoid opening mines and uncover all tiles without mines."
+    },
+    "open": {
+      "title": "Revealing Tiles",
+      "description": "Click on a tile to reveal it, and it will show one of the following:",
+      "number": {
+        "title": "Number",
+        "description": "Indicates the number of mines hidden in the eight adjacent tiles.\nUse this information to deduce the positions of the mines."
+      },
+      "blank": {
+        "title": "Blank",
+        "description": "Indicates that there are no mines in the surrounding tiles.\nAdditionally, adjacent tiles will automatically open.\nIf there are consecutive blanks, they will open in a chain reaction."
+      },
+      "mine": {
+        "title": "Mine",
+        "description": "Revealing a mine will result in a game over."
+      }
+    },
+    "flag": {
+      "title": "Placing Flags",
+      "description": "To prevent accidental tile reveals, \nyou can place a flag on tiles that you suspect contain mines.\nRight-click on the tile (or long-press on touch devices) to place a flag."
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "theme": "Theme",
+    "level": "Level",
+    "width": "Width",
+    "height": "Height",
+    "mines": "Mines"
+  }
+}
