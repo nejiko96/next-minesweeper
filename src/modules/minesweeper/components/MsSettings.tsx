@@ -115,23 +115,23 @@ const MsSettings: React.FC<Props> = ({ onClose }) => {
         <form className="w-full">
           {/* <MsSelectBox
             id="lang"
-            value={lang}
             label="Language"
             options={langOptions}
+            defaultValue={lang}
             onChange={handleLangChange}
           /> */}
           <MsSelectBox
             id="theme"
-            value={`${name}_${size}`}
             label={t`settings.theme`}
             options={themeOptions}
+            defaultValue={`${name}_${size}`}
             onChange={handleThemeChange}
           />
           <MsSelectBox
             id="level"
-            value={level}
             label={t`settings.level`}
             options={levelOptions}
+            defaultValue={level}
             onChange={handleLevelChange}
           />
 
@@ -147,32 +147,32 @@ const MsSettings: React.FC<Props> = ({ onClose }) => {
             <div>
               <MsNumberInput
                 id="width"
-                value={width}
                 label={t`settings.width`}
                 min="9"
                 max="30"
                 step="1"
                 placeholder="9 - 30"
+                defaultValue={width}
                 onChange={handleWidthChange}
               />
               <MsNumberInput
                 id="height"
-                value={height}
                 label={t`settings.height`}
                 min="9"
                 max="24"
                 step="1"
                 placeholder="9 - 24"
+                defaultValue={height}
                 onChange={handleHeightChange}
               />
               <MsNumberInput
                 id="mines"
-                value={mines}
                 label={t`settings.mines`}
                 min="10"
                 max="999"
                 step="1"
                 placeholder="10 - 999"
+                defaultValue={mines}
                 onChange={handleMinesChange}
               />
             </div>

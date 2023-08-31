@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import type { Metadata } from 'next'
+import { type Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
 // https://github.com/FortAwesome/react-fontawesome/issues/134

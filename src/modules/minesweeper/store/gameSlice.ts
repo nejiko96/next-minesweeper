@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import * as gameModel from '../models/gameModel'
 import { makeWrapper } from '../models/mouseEventModel'
-import type { GameStoreStateType } from '../types'
+import { type GameStoreStateType } from '../types'
 
 const mouseModel = makeWrapper(gameModel)
 

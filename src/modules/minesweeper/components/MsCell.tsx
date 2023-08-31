@@ -1,9 +1,8 @@
-import classNames from 'classnames'
 import { useEffect, useState } from 'react'
 
 import { styleIdx } from '../models/cellModel'
 import classes from '../styles/MsCell.module.css'
-import type { GridClickActionType, GridPosActionType } from '../types'
+import { type GridClickActionType, type GridPosActionType } from '../types'
 
 const calcBgPos: (s: number, v: number) => string = (s, v) => {
   const i = styleIdx(v)
@@ -51,20 +50,23 @@ const MsCell: React.FC<Props> = ({
   const themeClass = `${name}-${size}`.toLowerCase()
 
   // mouse events
-  const handleMouseDown: React.MouseEventHandler<HTMLSpanElement> = (ev) =>
+  const handleMouseDown: React.MouseEventHandler<HTMLDivElement> = (ev) =>
     onMouseDown({ button: ev.button, row, col })
-  const handleMouseUp: () => void = () => onMouseUp({ row, col })
-  const handleMouseEnter: () => void = () => onMouseOver({ row, col })
-  const handleMouseLeave: () => void = () => onMouseOut({ row, col })
+  const handleMouseUp: React.MouseEventHandler<HTMLDivElement> = () =>
+    onMouseUp({ row, col })
+  const handleMouseEnter: React.MouseEventHandler<HTMLDivElement> = () =>
+    onMouseOver({ row, col })
+  const handleMouseLeave: React.MouseEventHandler<HTMLDivElement> = () =>
+    onMouseOut({ row, col })
 
   // touch events
   const [touched, setTouched] = useState(false)
-  const handleTouchStart: () => void = () => {
+  const handleTouchStart: React.TouchEventHandler<HTMLDivElement> = () => {
     // console.log('handleTouchStart');
     onTouchStart({ row, col })
     setTouched(true)
   }
-  const handleTouchEnd: React.TouchEventHandler<HTMLSpanElement> = (ev) => {
+  const handleTouchEnd: React.TouchEventHandler<HTMLDivElement> = (ev) => {
     // console.log('handleTouchEnd');
     if (touched) {
       setTouched(false)
@@ -86,8 +88,8 @@ const MsCell: React.FC<Props> = ({
   }, [row, col, touched, onLongPress])
 
   return (
-    <span
-      className={classNames(classes.cell, classes[themeClass])}
+    <div
+      className={classes[themeClass]}
       style={{ backgroundPosition: getBgPos(size, value) }}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}

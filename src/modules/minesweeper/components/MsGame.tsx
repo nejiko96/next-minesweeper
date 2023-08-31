@@ -5,18 +5,21 @@ import { Transition } from '@headlessui/react'
 
 import { useGame } from '../store/gameSlice'
 import classes from '../styles/MsGame.module.css'
-import type {
-  GameStatusType,
-  GridClickActionType,
-  GridPosActionType,
-  SizeSettingType,
-  ThemeSettingType,
-  TimerModeType,
+import {
+  GameStatusEnum,
+  GameStatusFlags,
+  TimerModeEnum,
+  type GameStatusType,
+  type GridClickActionType,
+  type GridPosActionType,
+  type SizeSettingType,
+  type ThemeSettingType,
+  type TimerModeType,
 } from '../types'
-import { GameStatusEnum, GameStatusFlags, TimerModeEnum } from '../types'
 
 import MsBoard from './MsBoard'
 import MsCell from './MsCell'
+import MsNumberLabel from './MsNumberLabel'
 import MsTimer from './MsTimer'
 
 const timerModeTbl: Readonly<Record<GameStatusType, TimerModeType>> = {
@@ -85,29 +88,38 @@ const MsGame: React.FC<Props> = ({ settings: { theme, board } }) => {
 
   return (
     <PreventContextMenu>
-      <div className={classes.container}>
-        {t`game.remain.pre`}{' '}
-        <span className={classes['text-box']}>{remain}</span>{' '}
-        {t`game.remain.post`}
-        <span className="w-5" />
-        {t`game.timer.pre`}{' '}
-        <MsTimer
-          className={classes['text-box']}
-          interval="1s"
-          limit={999}
-          mode={timerModeTbl[game.status]}
-        />{' '}
-        {t`game.timer.post`}
-        <span className="w-5" />
-        <Transition
-          as="span"
-          show={game.status === GameStatusEnum.CLEARED}
-          enterTo={classes['pyonpyon-enter-active']}
-        >
-          {t`game.cleared`}
-        </Transition>
-        <br />
-        <MsBoard grid={game.grid} overlay={overlay}>
+      <div
+        className={'select-none p-8'}
+        style={{
+          WebkitTouchCallout: 'none',
+          WebkitTapHighlightColor: 'transparent',
+        }}
+      >
+        <div className="whitespace-nowrap">
+          {t`game.remain.pre`}{' '}
+          <MsNumberLabel className="inline-block w-10">{remain}</MsNumberLabel>{' '}
+          {t`game.remain.post`}
+          <span className="inline-block w-5" />
+          {t`game.timer.pre`}{' '}
+          <MsNumberLabel className="inline-block w-10">
+            <MsTimer
+              interval="1s"
+              limit={999}
+              mode={timerModeTbl[game.status]}
+            />
+          </MsNumberLabel>{' '}
+          {t`game.timer.post`}
+          <span className="inline-block w-5" />
+          <Transition
+            as="span"
+            show={game.status === GameStatusEnum.CLEARED}
+            enterTo={classes['pyonpyon-enter-active']}
+            className="inline-block"
+          >
+            {t`game.cleared`}
+          </Transition>
+        </div>
+        <MsBoard size={theme.size} grid={game.grid} overlay={overlay}>
           <MsCell
             theme={theme}
             row={-1}
@@ -122,9 +134,8 @@ const MsGame: React.FC<Props> = ({ settings: { theme, board } }) => {
             onLongPress={handleLongPress}
           />
         </MsBoard>
-        <br />
         <button
-          className="rounded bg-gray-400 px-4 py-2 text-black hover:bg-gray-300"
+          className="mt-2 block rounded bg-gray-500 px-4 py-2 text-white hover:bg-gray-300"
           type="button"
           onClick={handleRestart}
         >
