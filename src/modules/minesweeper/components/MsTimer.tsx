@@ -1,10 +1,4 @@
-import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  type HTMLAttributes,
-} from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { TimerModeEnum, type TimerModeType } from '../types'
 
@@ -13,13 +7,13 @@ const timeUnitTbl: Readonly<Record<string, number>> = {
   s: 1000,
 }
 
-type Props = HTMLAttributes<HTMLSpanElement> & {
+type Props = {
   interval: string
   limit: number
   mode: TimerModeType
 }
 
-const MsTimer: React.FC<Props> = ({ interval, limit, mode, ...props }) => {
+const MsTimer: React.FC<Props> = ({ interval, limit, mode }) => {
   // data
   const intervalMs: number = (() => {
     const match = /^([0-9]+(?:\.[0-9]*)?)\s*(.*s)?$/.exec(interval.trim()) || []
@@ -64,7 +58,7 @@ const MsTimer: React.FC<Props> = ({ interval, limit, mode, ...props }) => {
     }
     return () => window.clearInterval(intervalId)
   }, [innerMode, intervalMs])
-  return <span {...props}>{count}</span>
+  return <>{count}</>
 }
 
 export default MsTimer

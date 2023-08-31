@@ -1,28 +1,15 @@
-.cell {
-  display: inline-block;
-  overflow: hidden;
-}
-
 .green-16 {
   background-image: url('/assets/green_16x16.png');
-  height: 16px;
-  width: 16px;
 }
 
 .green-32 {
   background-image: url('/assets/green_32x32.png');
-  height: 32px;
-  width: 32px;
 }
 
 .ms-16 {
   background-image: url('/assets/MS_16x16.png');
-  height: 16px;
-  width: 16px;
 }
 
 .ms-32 {
   background-image: url('/assets/MS_32x32.png');
-  height: 32px;
-  width: 32px;
 }
