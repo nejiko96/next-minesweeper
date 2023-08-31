@@ -3,7 +3,7 @@
 // https://locize.com/blog/next-13-app-dir-i18n/
 // https://zenn.dev/sasigume/articles/937a11c655b15c
 
-import type { NextRequest } from 'next/server'
+import { type NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
 import acceptLanguage from 'accept-language'

@@ -1,7 +1,7 @@
 import { bindActionCreators, createSlice } from '@reduxjs/toolkit'
 import { useDispatch, useSelector } from 'react-redux'
 
-import type { SettingsType } from '../types'
+import { type SettingsType } from '../types'
 
 const settingsSlice = createSlice({
   name: 'settings',

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 
 import { styleIdx } from '../models/cellModel'
 import classes from '../styles/MsCell.module.css'
-import type { GridClickActionType, GridPosActionType } from '../types'
+import { type GridClickActionType, type GridPosActionType } from '../types'
 
 const calcBgPos: (s: number, v: number) => string = (s, v) => {
   const i = styleIdx(v)

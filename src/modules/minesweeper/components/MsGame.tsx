@@ -5,15 +5,17 @@ import { Transition } from '@headlessui/react'
 
 import { useGame } from '../store/gameSlice'
 import classes from '../styles/MsGame.module.css'
-import type {
-  GameStatusType,
-  GridClickActionType,
-  GridPosActionType,
-  SizeSettingType,
-  ThemeSettingType,
-  TimerModeType,
+import {
+  GameStatusEnum,
+  GameStatusFlags,
+  TimerModeEnum,
+  type GameStatusType,
+  type GridClickActionType,
+  type GridPosActionType,
+  type SizeSettingType,
+  type ThemeSettingType,
+  type TimerModeType,
 } from '../types'
-import { GameStatusEnum, GameStatusFlags, TimerModeEnum } from '../types'
 
 import MsBoard from './MsBoard'
 import MsCell from './MsCell'
