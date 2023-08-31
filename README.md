@@ -4,7 +4,7 @@
 
 ## Demo
 
-https://next-minesweeper-flame.vercel.app/
+https://cozy-beignet-765cd6.netlify.app/
 
 ## Documents
 
