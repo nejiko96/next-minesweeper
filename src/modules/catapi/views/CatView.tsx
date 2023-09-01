@@ -7,6 +7,9 @@ import { useEffect, useState } from 'react'
 import LoadingOverlay from '@/core/components/LoadingOverlay'
 import { fetchCatImage } from '../models/catApi'
 
+const EMPTY_IMG_URL =
+  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='
+
 const CatView: React.FC = () => {
   // translation
   const { t } = useTranslation('cat')
@@ -39,13 +42,17 @@ const CatView: React.FC = () => {
           {t`button`}
         </button>
         <div className="relative mx-auto mt-4 h-screen w-3/5">
-          <Image
-            src={catImageUrl}
-            fill
-            style={{ objectFit: 'contain', objectPosition: '50% top' }}
-            alt="Cat Image"
-            onLoadingComplete={loadedCatImage}
-          />
+          {catImageUrl && (
+            <Image
+              src={catImageUrl}
+              fill
+              style={{ objectFit: 'contain', objectPosition: '50% top' }}
+              alt="Cat Image"
+              placeholder="blur"
+              blurDataURL={EMPTY_IMG_URL}
+              onLoadingComplete={loadedCatImage}
+            />
+          )}
         </div>
       </div>
     </>
