@@ -1,9 +1,21 @@
 {
-  "locales": ["en", "ja"],
+  "locales": [
+    "en",
+    "ja"
+  ],
   "defaultLocale": "en",
   "pages": {
-    "*": ["common"],
-    "/[lang]": ["home"],
-    "/[lang]/ms": ["ms"]
+    "*": [
+      "common"
+    ],
+    "/[lang]": [
+      "home"
+    ],
+    "/[lang]/ms": [
+      "ms"
+    ],
+    "/[lang]/cat": [
+      "cat"
+    ]
   }
 }
