@@ -1,5 +1,5 @@
 import useTranslation from 'next-translate/useTranslation'
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 
 import { Transition } from '@headlessui/react'
 
@@ -27,21 +27,6 @@ const timerModeTbl: Readonly<Record<GameStatusType, TimerModeType>> = {
   [GameStatusEnum.RUNNING]: TimerModeEnum.RUNNING,
   [GameStatusEnum.CLEARED]: TimerModeEnum.STOPPED,
   [GameStatusEnum.GAMEOVER]: TimerModeEnum.STOPPED,
-}
-
-const PreventContextMenu: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  // disable context menu
-  const node = useRef<HTMLDivElement>(null)
-  const handleContextMenu: (e: MouseEvent) => void = (e) => e.preventDefault()
-  useEffect(() => {
-    const curNode = node.current as HTMLDivElement
-    curNode.addEventListener('contextmenu', handleContextMenu)
-    return () => curNode.removeEventListener('contextmenu', handleContextMenu)
-  }, [])
-
-  return <div ref={node}>{children}</div>
 }
 
 type Props = {
@@ -87,62 +72,68 @@ const MsGame: React.FC<Props> = ({ settings: { theme, board } }) => {
   const handleLongPress: GridPosActionType = (params) => longPress(params)
 
   return (
-    <PreventContextMenu>
-      <div
-        className={'select-none p-8'}
-        style={{
-          WebkitTouchCallout: 'none',
-          WebkitTapHighlightColor: 'transparent',
-        }}
-      >
-        <div className="whitespace-nowrap">
-          {t`game.remain.pre`}{' '}
-          <MsNumberLabel className="inline-block w-10">{remain}</MsNumberLabel>{' '}
-          {t`game.remain.post`}
-          <span className="inline-block w-5" />
-          {t`game.timer.pre`}{' '}
-          <MsNumberLabel className="inline-block w-10">
-            <MsTimer
-              interval="1s"
-              limit={999}
-              mode={timerModeTbl[game.status]}
-            />
-          </MsNumberLabel>{' '}
-          {t`game.timer.post`}
-          <span className="inline-block w-5" />
-          <Transition
-            as="span"
-            show={game.status === GameStatusEnum.CLEARED}
-            enterTo={classes['pyonpyon-enter-active']}
-            className="inline-block"
-          >
-            {t`game.cleared`}
-          </Transition>
-        </div>
-        <MsBoard size={theme.size} grid={game.grid} overlay={overlay}>
-          <MsCell
-            theme={theme}
-            row={-1}
-            col={-1}
-            value={-1}
-            onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
-            onMouseOver={handleMouseOver}
-            onMouseOut={handleMouseOut}
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
-            onLongPress={handleLongPress}
-          />
-        </MsBoard>
-        <button
-          className="mt-2 block rounded bg-gray-500 px-4 py-2 text-white hover:bg-gray-300"
-          type="button"
-          onClick={handleRestart}
+    <div
+      className={'select-none p-8'}
+      style={{
+        WebkitTouchCallout: 'none',
+        WebkitTapHighlightColor: 'transparent',
+      }}
+      onContextMenu={(ev) => ev.preventDefault()}
+    >
+      <div className="mb-1 whitespace-nowrap">
+        <MsNumberLabel
+          className="inline-block w-10"
+          preStr={t`game.remain.pre`}
+          postStr={t`game.remain.post`}
         >
-          {t`game.retry`}
-        </button>
+          {remain}
+        </MsNumberLabel>
+        <span className="inline-block w-5" />
+        <MsNumberLabel
+          className="inline-block w-10"
+          preStr={t`game.timer.pre`}
+          postStr={t`game.timer.post`}
+        >
+          <MsTimer interval="1s" limit={999} mode={timerModeTbl[game.status]} />
+        </MsNumberLabel>
+        <span className="inline-block w-5" />
+        <Transition
+          as="span"
+          show={game.status === GameStatusEnum.CLEARED}
+          enterTo={classes['pyonpyon-enter-active']}
+          className="inline-block"
+        >
+          {t`game.cleared`}
+        </Transition>
       </div>
-    </PreventContextMenu>
+      <MsBoard
+        size={theme.size}
+        grid={game.grid}
+        overlay={overlay}
+        className="mb-1"
+      >
+        <MsCell
+          theme={theme}
+          row={-1}
+          col={-1}
+          value={-1}
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
+          onMouseOver={handleMouseOver}
+          onMouseOut={handleMouseOut}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onLongPress={handleLongPress}
+        />
+      </MsBoard>
+      <button
+        className="block rounded bg-gray-500 px-4 py-2 text-white hover:bg-gray-300"
+        type="button"
+        onClick={handleRestart}
+      >
+        {t`game.retry`}
+      </button>
+    </div>
   )
 }
 

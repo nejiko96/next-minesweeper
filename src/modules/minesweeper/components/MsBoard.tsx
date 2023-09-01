@@ -1,15 +1,22 @@
-import React from 'react'
+import classNames from 'classnames'
+import React, { type HTMLAttributes } from 'react'
 
-type Props = {
+type Props = HTMLAttributes<HTMLDivElement> & {
   size: number
   grid: number[][]
   overlay: boolean
   children: React.ReactElement
 }
 
-const MsBoard: React.FC<Props> = ({ size, grid, overlay, children }) => {
+const MsBoard: React.FC<Props> = ({
+  size,
+  grid,
+  overlay,
+  className,
+  children,
+}) => {
   return (
-    <div className="relative">
+    <div className={classNames('relative', className)}>
       <div
         className="grid"
         style={{
