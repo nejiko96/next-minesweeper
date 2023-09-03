@@ -15,19 +15,19 @@ const MsNumberLabel: React.FC<Props> = ({
   ...props
 }) => {
   return (
-    <>
+    <span>
       {preStr && preStr + ' '}
       <span
         className={classNames(
           className,
-          'border border-gray-300 bg-gray-100 px-0.5 text-right text-black',
+          'inline-block border border-gray-300 bg-gray-100 px-0.5 text-right text-black',
         )}
         {...props}
       >
         {children}
       </span>
       {postStr && ' ' + postStr}
-    </>
+    </span>
   )
 }
 

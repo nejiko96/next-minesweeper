@@ -80,28 +80,25 @@ const MsGame: React.FC<Props> = ({ settings: { theme, board } }) => {
       }}
       onContextMenu={(ev) => ev.preventDefault()}
     >
-      <div className="mb-1 whitespace-nowrap">
+      <div className="mb-1 flex flex-row justify-start gap-5">
         <MsNumberLabel
-          className="inline-block w-10"
+          className="w-10"
           preStr={t`game.remain.pre`}
           postStr={t`game.remain.post`}
         >
           {remain}
         </MsNumberLabel>
-        <span className="inline-block w-5" />
         <MsNumberLabel
-          className="inline-block w-10"
+          className="w-10"
           preStr={t`game.timer.pre`}
           postStr={t`game.timer.post`}
         >
           <MsTimer interval="1s" limit={999} mode={timerModeTbl[game.status]} />
         </MsNumberLabel>
-        <span className="inline-block w-5" />
         <Transition
           as="span"
           show={game.status === GameStatusEnum.CLEARED}
           enterTo={classes['pyonpyon-enter-active']}
-          className="inline-block"
         >
           {t`game.cleared`}
         </Transition>

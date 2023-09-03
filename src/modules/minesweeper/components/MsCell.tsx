@@ -48,6 +48,7 @@ const MsCell: React.FC<Props> = ({
 }) => {
   // data
   const themeClass = `${name}-${size}`.toLowerCase()
+  const bgPos = getBgPos(size, value)
 
   // mouse events
   const handleMouseDown: React.MouseEventHandler<HTMLDivElement> = (ev) =>
@@ -90,7 +91,7 @@ const MsCell: React.FC<Props> = ({
   return (
     <div
       className={classes[themeClass]}
-      style={{ backgroundPosition: getBgPos(size, value) }}
+      style={{ backgroundPosition: bgPos }}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       onMouseEnter={handleMouseEnter}
