@@ -16,7 +16,7 @@ const MsBoard: React.FC<Props> = ({
   children,
 }) => {
   return (
-    <div className={classNames('relative', className)}>
+    <div className={classNames('relative w-fit', className)}>
       <div
         className="grid"
         style={{
