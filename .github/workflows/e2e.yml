@@ -5,19 +5,15 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      - name: Start App
-        run: |
-          yarn
-          yarn build
-          yarn start &
-
-      - uses: cypress-io/github-action@v2
+      - uses: cypress-io/github-action@v6
         with:
-          wait-on: 'http://localhost:3000'
+          build: yarn build
+          start: yarn start
+          wait-on: 'http://localhost:3000/en'
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         if: always()
         with:
           name: Cypress E2E Videos
