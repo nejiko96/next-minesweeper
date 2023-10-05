@@ -38,7 +38,6 @@ const LanguageToggle: React.FC<Props> = ({ className }) => {
           alt="🇯🇵"
           width={30}
           height={20}
-          priority
           className="inline"
         />
       </span>
@@ -68,7 +67,6 @@ const LanguageToggle: React.FC<Props> = ({ className }) => {
           alt="🇬🇧"
           width={30}
           height={20}
-          priority
           className="inline"
         />
       </span>
