@@ -1,4 +1,4 @@
-import { fillArray, shuffle } from '@/core/utils'
+import { shuffle, times } from 'lodash-es'
 
 type NeighborType = {
   di: number
@@ -86,7 +86,7 @@ class SlidePuzzle {
     }
 
     this.s = this.w * this.h
-    this.#panels = fillArray(this.s, (k) => k + 1)
+    this.#panels = times(this.s, (k) => k + 1)
     this.#completeStatus = JSON.stringify(this.#arrToGrid(this.#panels))
   }
 
@@ -123,7 +123,7 @@ class SlidePuzzle {
    * @param {number[]} パネルの配列
    */
   #arrToGrid(arr: number[]): number[][] {
-    return fillArray(this.h, (i) => arr.slice(i * this.w, (i + 1) * this.w))
+    return times(this.h, (i) => arr.slice(i * this.w, (i + 1) * this.w))
   }
 
   /**

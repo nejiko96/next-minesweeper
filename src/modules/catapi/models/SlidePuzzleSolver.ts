@@ -1,4 +1,4 @@
-import { fillArray2D } from '@/core/utils'
+import { times } from 'lodash-es'
 import SlidePuzzle from './SlidePuzzle'
 
 /**
@@ -219,7 +219,7 @@ class SlidePuzzleSolver {
   #vacate(ti: number, tj: number): void {
     // 目標位置を始点とした最短経路探索
     const q: number[][] = []
-    const prev: number[][][] = fillArray2D(this.#w, this.#h, () => [-2])
+    const prev: number[][][] = times(this.#w, () => times(this.#h, () => [-2]))
     q.push([ti, tj])
     prev[ti][tj] = [-1]
     while (q.length) {

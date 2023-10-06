@@ -1,4 +1,4 @@
-import { fillArray, fillArray2D, noop } from '@/core/utils'
+import { noop, times } from 'lodash-es'
 import {
   GameStatusEnum,
   GameStatusFlags,
@@ -70,7 +70,7 @@ const generateMines: (
   state.minePos = {}
   const w = state.width
   let n = w * state.height
-  const samples = fillArray(n, (k) => k)
+  const samples = times(n, (k) => k)
   const excludes = neighbors(state, i, j)
     .map(([i2, j2]) => i2 * w + j2)
     .reverse()
@@ -191,7 +191,7 @@ const initBoard: (size: Readonly<SizeStateType>) => BoardStateType = ({
   mines,
 }) => ({
   status: GameStatusEnum.READY,
-  grid: fillArray2D(width, height, cell.initialValue),
+  grid: times(width, () => times(height, cell.initialValue)),
   minePos: {},
   markPos: {},
   countDown: width * height - mines,

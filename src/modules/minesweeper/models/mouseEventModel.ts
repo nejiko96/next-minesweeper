@@ -1,4 +1,4 @@
-import { noop } from '@/core/utils'
+import { noop } from 'lodash-es'
 import { type MouseStateType } from '../types'
 
 type TgtHandlerType<S, P extends unknown[]> = (state: S, ...args: P) => void
