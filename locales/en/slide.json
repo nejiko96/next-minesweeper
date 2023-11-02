@@ -1,0 +1,9 @@
+{
+  "title": "Slide Puzzle",
+  "loading": "Loading cat image...",
+  "restart": "Restart",
+  "autopilot": {
+    "start": "Start autopilot",
+    "stop": "Stop autopilot"
+  }
+}

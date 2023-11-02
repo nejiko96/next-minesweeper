@@ -16,6 +16,9 @@
     ],
     "/[lang]/cat": [
       "cat"
+    ],
+    "/[lang]/slide": [
+      "slide"
     ]
   }
 }
