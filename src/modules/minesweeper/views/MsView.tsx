@@ -50,10 +50,10 @@ const MsView: React.FC = () => {
           as="div"
           className="absolute right-0 top-0 h-[calc(100vh_-_5rem)] w-80"
           show={settingsOpen}
-          enter="transition-transform duration-500 ease"
+          enter="transition-transform duration-500 ease-out"
           enterFrom="translate-x-full"
           enterTo="translate-x-0"
-          leave="transition-transform duration-500 ease"
+          leave="transition-transform duration-500 ease-out"
           leaveFrom="translate-x-0"
           leaveTo="translate-x-full"
         >

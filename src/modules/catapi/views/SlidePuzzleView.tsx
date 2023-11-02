@@ -9,6 +9,8 @@ import {
   type ReactEventHandler,
 } from 'react'
 
+import { Transition } from '@headlessui/react'
+
 import LoadingOverlay from '@/core/components/LoadingOverlay'
 import SlidePuzzle from '../models/SlidePuzzle'
 import SlidePuzzleSolver from '../models/SlidePuzzleSolver'
@@ -104,11 +106,11 @@ const SlidePuzzleView = () => {
   }
 
   const loadedCatImage: ReactEventHandler<HTMLImageElement> = () => {
-    setIsLoading(false)
     setBgSize({
       width: imgRef.current?.width || 500,
       height: imgRef.current?.height || 500,
     })
+    setIsLoading(false)
   }
 
   ///
@@ -146,40 +148,42 @@ const SlidePuzzleView = () => {
               onLoad={loadedCatImage}
             />
           )}
-          {catImageUrl && !complete && (
-            <div
-              className="absolute inset-0 grid bg-gray-500"
-              style={{
-                gridTemplateColumns: `repeat(${model.w}, minmax(0, 1fr))`,
-                gridTemplateRows: `repeat(${model.h}, minmax(0, 1fr))`,
-              }}
-            >
-              {grid.flatMap((arr, i) =>
-                arr.map((v, j) =>
-                  v < model.s ? (
-                    <div
-                      key={`${i}_${j}`}
-                      className="slidepanel inline-flex select-none items-center justify-center border-2 border-amber-200 text-4xl font-bold text-white"
-                      style={{
-                        backgroundImage: `url('${catImageUrl}')`,
-                        backgroundPosition: bgPos(v),
-                        backgroundSize: `${bgSize.width}px ${bgSize.height}px`,
-                        WebkitTextStroke: '1px #000',
-                      }}
-                      onClick={() => handleClick(i, j)}
-                    >
-                      {v}
-                    </div>
-                  ) : (
-                    <div
-                      key={`${i}_${j}`}
-                      className="border-2 border-amber-200 bg-transparent"
-                    ></div>
-                  ),
+          <Transition
+            as="div"
+            className="absolute inset-0 grid bg-gray-500"
+            style={{
+              gridTemplateColumns: `repeat(${model.w}, minmax(0, 1fr))`,
+              gridTemplateRows: `repeat(${model.h}, minmax(0, 1fr))`,
+            }}
+            show={Boolean(catImageUrl) && !complete}
+            leave="transition-opacity duration-[2s] ease-linear"
+            leaveTo="opacity-0"
+          >
+            {grid.flatMap((arr, i) =>
+              arr.map((v, j) =>
+                v < model.s ? (
+                  <div
+                    key={`${i}_${j}`}
+                    className="inline-flex select-none items-center justify-center border-2 border-amber-200 text-4xl font-bold text-white"
+                    style={{
+                      backgroundImage: `url('${catImageUrl}')`,
+                      backgroundPosition: bgPos(v),
+                      backgroundSize: `${bgSize.width}px ${bgSize.height}px`,
+                      WebkitTextStroke: '1px #000',
+                    }}
+                    onClick={() => handleClick(i, j)}
+                  >
+                    {v}
+                  </div>
+                ) : (
+                  <div
+                    key={`${i}_${j}`}
+                    className="border-2 border-amber-200 bg-transparent"
+                  ></div>
                 ),
-              )}
-            </div>
-          )}
+              ),
+            )}
+          </Transition>
         </div>
         {!complete && (
           <button
