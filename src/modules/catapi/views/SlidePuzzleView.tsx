@@ -10,6 +10,7 @@ import {
 } from 'react'
 
 import { Transition } from '@headlessui/react'
+import FlipMove from 'react-flip-move'
 
 import LoadingOverlay from '@/core/components/LoadingOverlay'
 import SlidePuzzle from '../models/SlidePuzzle'
@@ -17,7 +18,6 @@ import SlidePuzzleSolver from '../models/SlidePuzzleSolver'
 import { fetchCatImage } from '../models/catApi'
 
 const model = new SlidePuzzle(4)
-
 const solver = new SlidePuzzleSolver()
 
 const SlidePuzzleView = () => {
@@ -30,21 +30,20 @@ const SlidePuzzleView = () => {
 
   // data
   const [grid, setGrid] = useState<number[][]>([])
-  const [trainsitionName, setTransitionName] = useState('')
 
   // computed values
   const complete = model.isComplete(grid)
 
   // events
   const slideGrid = (i: number, j: number): void => {
-    const move = model.slideAt(grid, i, j)
-    setTransitionName(`slide-${move}`)
+    const grid2 = JSON.parse(JSON.stringify(grid))
+    model.slideAt(grid2, i, j)
+    setGrid(grid2)
   }
 
   const handleRestart = (): void => {
     setIsLoading(true)
     setGrid(model.generateGrid())
-    setTransitionName('')
     setPath(null)
     updateCatImage()
   }
@@ -93,8 +92,8 @@ const SlidePuzzleView = () => {
   ///
 
   // data
-  const [catImageUrl, setCatImageUrl] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [catImageUrl, setCatImageUrl] = useState('')
   const imgRef = createRef<HTMLImageElement>()
 
   // events
@@ -150,39 +149,43 @@ const SlidePuzzleView = () => {
           )}
           <Transition
             as="div"
-            className="absolute inset-0 grid bg-gray-500"
-            style={{
-              gridTemplateColumns: `repeat(${model.w}, minmax(0, 1fr))`,
-              gridTemplateRows: `repeat(${model.h}, minmax(0, 1fr))`,
-            }}
-            show={Boolean(catImageUrl) && !complete}
+            className="absolute inset-0"
+            show={catImageUrl !== '' && !complete}
             leave="transition-opacity duration-[2s] ease-linear"
             leaveTo="opacity-0"
           >
-            {grid.flatMap((arr, i) =>
-              arr.map((v, j) =>
-                v < model.s ? (
-                  <div
-                    key={`${i}_${j}`}
-                    className="inline-flex select-none items-center justify-center border-2 border-amber-200 text-4xl font-bold text-white"
-                    style={{
-                      backgroundImage: `url('${catImageUrl}')`,
-                      backgroundPosition: bgPos(v),
-                      backgroundSize: `${bgSize.width}px ${bgSize.height}px`,
-                      WebkitTextStroke: '1px #000',
-                    }}
-                    onClick={() => handleClick(i, j)}
-                  >
-                    {v}
-                  </div>
-                ) : (
-                  <div
-                    key={`${i}_${j}`}
-                    className="border-2 border-amber-200 bg-transparent"
-                  ></div>
+            <FlipMove
+              duration={250}
+              easing="ease-out"
+              className="h-full bg-gray-500"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: `repeat(${model.w}, minmax(0, 1fr))`,
+                gridTemplateRows: `repeat(${model.h}, minmax(0, 1fr))`,
+              }}
+            >
+              {grid.flatMap((arr, i) =>
+                arr.map((v, j) =>
+                  v < model.s ? (
+                    <div
+                      key={v}
+                      className="inline-flex h-full select-none items-center justify-center border-2 border-amber-200 text-4xl font-bold text-white"
+                      style={{
+                        backgroundImage: `url('${catImageUrl}')`,
+                        backgroundPosition: bgPos(v),
+                        backgroundSize: `${bgSize.width}px ${bgSize.height}px`,
+                        WebkitTextStroke: '1px #000',
+                      }}
+                      onClick={() => handleClick(i, j)}
+                    >
+                      {v}
+                    </div>
+                  ) : (
+                    <div key={v} className="h-full bg-transparent" />
+                  ),
                 ),
-              ),
-            )}
+              )}
+            </FlipMove>
           </Transition>
         </div>
         {!complete && (
