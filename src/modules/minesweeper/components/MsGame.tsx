@@ -61,7 +61,9 @@ const MsGame: React.FC<Props> = ({ settings: { theme, board } }) => {
   // game events
   useEffect(() => {
     changeSize(board)
-  }, [board])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [board /*, changeSize */])
+
   const handleRestart: () => void = () => restart()
   const handleMouseDown: GridClickActionType = (params) => mouseDown(params)
   const handleMouseUp: GridPosActionType = (params) => mouseUp(params)

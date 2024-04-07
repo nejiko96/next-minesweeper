@@ -30,8 +30,8 @@ const MsTimer: React.FC<Props> = ({ interval, limit, mode }) => {
   })()
 
   // update counter
-  const update = useCallback<(newCount?: number) => void>(
-    (newCount) => {
+  const update = useCallback(
+    (newCount?: number) => {
       // console.log('updateCount', 'count', count, 'newCount', newCount);
       setCount(newCount === undefined ? count + 1 : newCount)
     },
@@ -39,7 +39,8 @@ const MsTimer: React.FC<Props> = ({ interval, limit, mode }) => {
   )
 
   // hold latest version of update function
-  const updateRef = useRef<(newCount?: number) => void>(null!)
+  type UpdateType = (newCount?: number) => void
+  const updateRef = useRef<UpdateType>(null!)
   useEffect(() => {
     updateRef.current = update
   }, [update])

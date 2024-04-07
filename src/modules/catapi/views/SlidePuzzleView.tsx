@@ -68,7 +68,8 @@ const SlidePuzzleView = () => {
       timerId = window.setTimeout(consumePath, 500)
     }
     return () => window.clearTimeout(timerId)
-  }, [path])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [path /*, consumePath */])
 
   const toggleAutopilot = () => {
     if (path) {
@@ -142,6 +143,7 @@ const SlidePuzzleView = () => {
         <h1 className="mb-10 text-3xl font-semibold">{t`title`}</h1>
         {catImageUrl && (
           <div className="relative mx-auto mb-6 w-[600px] border-2 border-amber-200">
+            {/*eslint-disable-next-line @next/next/no-img-element */}
             <img
               ref={imgRef}
               src={catImageUrl}
