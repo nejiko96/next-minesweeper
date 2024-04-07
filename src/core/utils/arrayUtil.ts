@@ -5,6 +5,7 @@ type RepeatedPermutation = {
 const repeatedPermutation: RepeatedPermutation = <T>(
   obj: string | ReadonlyArray<T>,
   len: number,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 ): any => {
   if (typeof obj === 'string') {
     return repeatedPermutation([...obj], len).map((arr) => arr.join(''))

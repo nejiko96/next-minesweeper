@@ -14,6 +14,8 @@ describe('Cat View', () => {
     cy.wait(5000)
 
     cy.get('@catImage').should('be.visible')
-    cy.get('@catImage').invoke('attr', 'src').should('not.eq', '@initialImageSrc')
+    cy.get('@catImage')
+      .invoke('attr', 'src')
+      .should('not.eq', '@initialImageSrc')
   })
 })

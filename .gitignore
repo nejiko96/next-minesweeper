@@ -37,10 +37,8 @@ next-env.d.ts
 
 # Editor directories and files
 .vscode/*
-
-# shared VSCode config
 !.vscode/extensions.json
-!.vscode/settings.json.sample
+!.vscode/settings.json
 
 # cypress videos
 /cypress/videos

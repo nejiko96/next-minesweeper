@@ -65,7 +65,7 @@ const forceMark: (f: number) => number = (f) =>
 
 const open: (f: number, byClick?: boolean) => [number, number] = (
   f,
-  byClick = true
+  byClick = true,
 ) => {
   // already opened
   if (!(f & valueFlags.HIDDEN)) {

@@ -40,16 +40,13 @@
   },
   "devDependencies": {
     "@types/lodash-es": "^4.17.9",
+    "@typescript-eslint/eslint-plugin": "^7.5.0",
+    "@typescript-eslint/parser": "^7.5.0",
     "cypress": "^13.1.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-tailwindcss": "^3.13.0",
     "next-translate-plugin": "^2.5.2",
-    "prettier": "^3.0.0"
+    "prettier": "^3.2.5"
   },
-  "prettier": {
-    "printWidth": 80,
-    "tabWidth": 2,
-    "singleQuote": true,
-    "semi": false
-  }
+  "packageManager": "yarn@4.1.1"
 }
