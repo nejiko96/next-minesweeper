@@ -191,7 +191,7 @@ const initBoard: (size: Readonly<SizeStateType>) => BoardStateType = ({
   mines,
 }) => ({
   status: GameStatusEnum.READY,
-  grid: times(width, () => times(height, cell.initialValue)),
+  grid: times(height, () => times(width, cell.initialValue)),
   minePos: {},
   markPos: {},
   countDown: width * height - mines,

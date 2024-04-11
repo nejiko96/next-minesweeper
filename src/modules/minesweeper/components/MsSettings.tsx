@@ -6,6 +6,7 @@ import { Transition } from '@headlessui/react'
 
 import { useSettings } from '../store/settingsSlice'
 
+import { type LevelType } from '../types'
 import MsNumberInput from './MsNumberInput'
 import MsSelectBox from './MsSelectBox'
 
@@ -65,24 +66,24 @@ const MsSettings: React.FC<Props> = ({ onClose }) => {
     })
   }
   const handleLevelChange: React.ChangeEventHandler<HTMLSelectElement> = (ev) =>
-    changeLevel(ev.target.value)
+    changeLevel(ev.target.value as LevelType)
   const handleWidthChange: React.ChangeEventHandler<HTMLInputElement> = (
     ev,
   ) => {
     const newWidth = ev.target.value
-    changeWidth(newWidth && Number(newWidth))
+    changeWidth((newWidth && Number(newWidth)) || undefined)
   }
   const handleHeightChange: React.ChangeEventHandler<HTMLInputElement> = (
     ev,
   ) => {
     const newHeight = ev.target.value
-    changeHeight(newHeight && Number(newHeight))
+    changeHeight((newHeight && Number(newHeight)) || undefined)
   }
   const handleMinesChange: React.ChangeEventHandler<HTMLInputElement> = (
     ev,
   ) => {
     const newMines = ev.target.value
-    changeMines(newMines && Number(newMines))
+    changeMines((newMines && Number(newMines)) || undefined)
   }
 
   return (

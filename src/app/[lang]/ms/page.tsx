@@ -1,6 +1,6 @@
 'use client'
 
-import MsStoreProvider from '@/modules/minesweeper/container/MsStoreProvider'
+import MsStoreProvider from '@/modules/minesweeper/store'
 import MsView from '@/modules/minesweeper/views/MsView'
 
 const MsPage: React.FC = () => {

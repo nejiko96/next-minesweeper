@@ -219,7 +219,7 @@ class SlidePuzzleSolver {
   #vacate(ti: number, tj: number): void {
     // 目標位置を始点とした最短経路探索
     const q: number[][] = []
-    const prev: number[][][] = times(this.#w, () => times(this.#h, () => [-2]))
+    const prev: number[][][] = times(this.#h, () => times(this.#w, () => [-2]))
     q.push([ti, tj])
     prev[ti][tj] = [-1]
     while (q.length) {

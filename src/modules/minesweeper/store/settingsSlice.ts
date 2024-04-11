@@ -1,7 +1,15 @@
-import { bindActionCreators, createSlice } from '@reduxjs/toolkit'
+import {
+  bindActionCreators,
+  createSlice,
+  type PayloadAction,
+} from '@reduxjs/toolkit'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { type SettingsType } from '../types'
+import {
+  type LevelType,
+  type SettingsType,
+  type ThemeSettingType,
+} from '../types'
 
 const settingsSlice = createSlice({
   name: 'settings',
@@ -16,22 +24,34 @@ const settingsSlice = createSlice({
     },
   } as SettingsType,
   reducers: {
-    changeLang: (state, action) => {
+    changeLang: (state: SettingsType, action: PayloadAction<string>) => {
       state.lang = action.payload
     },
-    changeTheme: (state, action) => {
+    changeTheme: (
+      state: SettingsType,
+      action: PayloadAction<ThemeSettingType>,
+    ) => {
       state.theme = action.payload
     },
-    changeLevel: (state, action) => {
+    changeLevel: (state: SettingsType, action: PayloadAction<LevelType>) => {
       state.board.level = action.payload
     },
-    changeWidth: (state, action) => {
+    changeWidth: (
+      state: SettingsType,
+      action: PayloadAction<number | undefined>,
+    ) => {
       state.board.width = action.payload
     },
-    changeHeight: (state, action) => {
+    changeHeight: (
+      state: SettingsType,
+      action: PayloadAction<number | undefined>,
+    ) => {
       state.board.height = action.payload
     },
-    changeMines: (state, action) => {
+    changeMines: (
+      state: SettingsType,
+      action: PayloadAction<number | undefined>,
+    ) => {
       state.board.mines = action.payload
     },
   },
@@ -48,5 +68,7 @@ export const useSettings = () => {
     ...actions,
   }
 }
+
+export type SettingsContextType = ReturnType<typeof useSettings>
 
 export default settingsSlice.reducer
