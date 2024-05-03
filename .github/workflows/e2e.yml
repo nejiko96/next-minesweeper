@@ -14,7 +14,7 @@ jobs:
           build: yarn build
           start: yarn start
           wait-on: 'http://localhost:3000/en'
-          install-command: yarn --immutable
+          install-command: yarn
 
       - uses: actions/upload-artifact@v4
         if: always()
