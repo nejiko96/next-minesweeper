@@ -56,7 +56,8 @@
         // https://qiita.com/P-man_Brown/items/bf05437afecde268ec15
         "files.associations": {
           "*.css": "tailwindcss"
-        }
+        },
+        "reactSnippets.settings.importReactOnTop": false
       }
     }
   }
