@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    environment:
+      TZ: Asia/Tokyo
+    volumes:
+      - .:/workspace:cached
+    ports:
+      - 3000:3000
+    command: sh -c "yarn && yarn dev"
