@@ -8,7 +8,7 @@ type Props = {
 const LoadingOverlay: React.FC<Props> = ({ show, text }) => {
   return (
     show && (
-      <div className="fixed left-0 top-0 z-50 flex h-full w-full flex-col items-center justify-center gap-3 overflow-auto bg-black/40">
+      <div className="fixed left-0 top-0 z-50 flex size-full flex-col items-center justify-center gap-3 overflow-auto bg-black/40">
         <ColorRing
           visible={true}
           height="80"
