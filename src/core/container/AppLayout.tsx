@@ -1,15 +1,15 @@
-import NavBar from '@/modules/menu/NavBar'
+import NavBar from '@/modules/menu/components/NavBar'
 
 type Props = { children: React.ReactNode }
 
 const AppLayout: React.FC<Props> = ({ children }) => {
   return (
-    <>
-      <header>
+    <div className="flex h-screen flex-col">
+      <header className="sticky top-0 z-10">
         <NavBar />
       </header>
-      <main>{children}</main>
-    </>
+      <main className="grow">{children}</main>
+    </div>
   )
 }
 

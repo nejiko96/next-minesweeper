@@ -23,7 +23,7 @@ const MsView: React.FC = () => {
 
   return (
     <>
-      <div className="relative p-4">
+      <div className="relative h-full p-4">
         <div className="text-center">
           <h1 className="mb-4 text-3xl font-semibold">{t`view.title`}</h1>
         </div>
@@ -48,7 +48,7 @@ const MsView: React.FC = () => {
 
         <Transition
           as="div"
-          className="absolute right-0 top-0 h-[calc(100vh_-_5rem)] w-80"
+          className="--h-[calc(100vh_-_5rem)] absolute right-0 top-0 h-full w-80"
           show={settingsOpen}
           enter="transition-transform duration-500 ease-out"
           enterFrom="translate-x-full"
